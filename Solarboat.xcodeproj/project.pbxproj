@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982101FB46D1D009DDCB0 /* AppDelegate.swift */; };
+		C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982121FB46D1D009DDCB0 /* ViewController.swift */; };
+		C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982141FB46D1D009DDCB0 /* Main.storyboard */; };
+		C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C82982171FB46D1D009DDCB0 /* Assets.xcassets */; };
+		C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */; };
+		C82982261FB46D1D009DDCB0 /* SolarboatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */; };
+		C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C82982221FB46D1D009DDCB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C82982051FB46D1C009DDCB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C829820C1FB46D1C009DDCB0;
+			remoteInfo = Solarboat;
+		};
+		C829822D1FB46D1D009DDCB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C82982051FB46D1C009DDCB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C829820C1FB46D1C009DDCB0;
+			remoteInfo = Solarboat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C829820D1FB46D1C009DDCB0 /* Solarboat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solarboat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82982101FB46D1D009DDCB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C82982121FB46D1D009DDCB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C82982151FB46D1D009DDCB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C82982171FB46D1D009DDCB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C829821A1FB46D1D009DDCB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C829821C1FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C82982211FB46D1D009DDCB0 /* SolarboatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolarboatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarboatTests.swift; sourceTree = "<group>"; };
+		C82982271FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolarboatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarboatUITests.swift; sourceTree = "<group>"; };
+		C82982321FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C829820A1FB46D1C009DDCB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C829821E1FB46D1D009DDCB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C82982291FB46D1D009DDCB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C82982041FB46D1C009DDCB0 = {
+			isa = PBXGroup;
+			children = (
+				C829820F1FB46D1C009DDCB0 /* Solarboat */,
+				C82982241FB46D1D009DDCB0 /* SolarboatTests */,
+				C829822F1FB46D1D009DDCB0 /* SolarboatUITests */,
+				C829820E1FB46D1C009DDCB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C829820E1FB46D1C009DDCB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C829820D1FB46D1C009DDCB0 /* Solarboat.app */,
+				C82982211FB46D1D009DDCB0 /* SolarboatTests.xctest */,
+				C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C829820F1FB46D1C009DDCB0 /* Solarboat */ = {
+			isa = PBXGroup;
+			children = (
+				C82982101FB46D1D009DDCB0 /* AppDelegate.swift */,
+				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
+				C82982141FB46D1D009DDCB0 /* Main.storyboard */,
+				C82982171FB46D1D009DDCB0 /* Assets.xcassets */,
+				C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */,
+				C829821C1FB46D1D009DDCB0 /* Info.plist */,
+			);
+			path = Solarboat;
+			sourceTree = "<group>";
+		};
+		C82982241FB46D1D009DDCB0 /* SolarboatTests */ = {
+			isa = PBXGroup;
+			children = (
+				C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */,
+				C82982271FB46D1D009DDCB0 /* Info.plist */,
+			);
+			path = SolarboatTests;
+			sourceTree = "<group>";
+		};
+		C829822F1FB46D1D009DDCB0 /* SolarboatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */,
+				C82982321FB46D1D009DDCB0 /* Info.plist */,
+			);
+			path = SolarboatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C829820C1FB46D1C009DDCB0 /* Solarboat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C82982351FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "Solarboat" */;
+			buildPhases = (
+				C82982091FB46D1C009DDCB0 /* Sources */,
+				C829820A1FB46D1C009DDCB0 /* Frameworks */,
+				C829820B1FB46D1C009DDCB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Solarboat;
+			productName = Solarboat;
+			productReference = C829820D1FB46D1C009DDCB0 /* Solarboat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C82982201FB46D1D009DDCB0 /* SolarboatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C82982381FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "SolarboatTests" */;
+			buildPhases = (
+				C829821D1FB46D1D009DDCB0 /* Sources */,
+				C829821E1FB46D1D009DDCB0 /* Frameworks */,
+				C829821F1FB46D1D009DDCB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C82982231FB46D1D009DDCB0 /* PBXTargetDependency */,
+			);
+			name = SolarboatTests;
+			productName = SolarboatTests;
+			productReference = C82982211FB46D1D009DDCB0 /* SolarboatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C829822B1FB46D1D009DDCB0 /* SolarboatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C829823B1FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "SolarboatUITests" */;
+			buildPhases = (
+				C82982281FB46D1D009DDCB0 /* Sources */,
+				C82982291FB46D1D009DDCB0 /* Frameworks */,
+				C829822A1FB46D1D009DDCB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C829822E1FB46D1D009DDCB0 /* PBXTargetDependency */,
+			);
+			name = SolarboatUITests;
+			productName = SolarboatUITests;
+			productReference = C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C82982051FB46D1C009DDCB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Thomas Roovers";
+				TargetAttributes = {
+					C829820C1FB46D1C009DDCB0 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					C82982201FB46D1D009DDCB0 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C829820C1FB46D1C009DDCB0;
+					};
+					C829822B1FB46D1D009DDCB0 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C829820C1FB46D1C009DDCB0;
+					};
+				};
+			};
+			buildConfigurationList = C82982081FB46D1C009DDCB0 /* Build configuration list for PBXProject "Solarboat" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C82982041FB46D1C009DDCB0;
+			productRefGroup = C829820E1FB46D1C009DDCB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C829820C1FB46D1C009DDCB0 /* Solarboat */,
+				C82982201FB46D1D009DDCB0 /* SolarboatTests */,
+				C829822B1FB46D1D009DDCB0 /* SolarboatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C829820B1FB46D1C009DDCB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */,
+				C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */,
+				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C829821F1FB46D1D009DDCB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C829822A1FB46D1D009DDCB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C82982091FB46D1C009DDCB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
+				C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C829821D1FB46D1D009DDCB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82982261FB46D1D009DDCB0 /* SolarboatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C82982281FB46D1D009DDCB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C82982231FB46D1D009DDCB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C829820C1FB46D1C009DDCB0 /* Solarboat */;
+			targetProxy = C82982221FB46D1D009DDCB0 /* PBXContainerItemProxy */;
+		};
+		C829822E1FB46D1D009DDCB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C829820C1FB46D1C009DDCB0 /* Solarboat */;
+			targetProxy = C829822D1FB46D1D009DDCB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C82982141FB46D1D009DDCB0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C82982151FB46D1D009DDCB0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C829821A1FB46D1D009DDCB0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C82982331FB46D1D009DDCB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C82982341FB46D1D009DDCB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C82982361FB46D1D009DDCB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Solarboat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.Solarboat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C82982371FB46D1D009DDCB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Solarboat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.Solarboat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C82982391FB46D1D009DDCB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SolarboatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.SolarboatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Solarboat.app/Solarboat";
+			};
+			name = Debug;
+		};
+		C829823A1FB46D1D009DDCB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SolarboatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.SolarboatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Solarboat.app/Solarboat";
+			};
+			name = Release;
+		};
+		C829823C1FB46D1D009DDCB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SolarboatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.SolarboatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Solarboat;
+			};
+			name = Debug;
+		};
+		C829823D1FB46D1D009DDCB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SolarboatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.SolarboatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Solarboat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C82982081FB46D1C009DDCB0 /* Build configuration list for PBXProject "Solarboat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C82982331FB46D1D009DDCB0 /* Debug */,
+				C82982341FB46D1D009DDCB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C82982351FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "Solarboat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C82982361FB46D1D009DDCB0 /* Debug */,
+				C82982371FB46D1D009DDCB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C82982381FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "SolarboatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C82982391FB46D1D009DDCB0 /* Debug */,
+				C829823A1FB46D1D009DDCB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C829823B1FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "SolarboatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C829823C1FB46D1D009DDCB0 /* Debug */,
+				C829823D1FB46D1D009DDCB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C82982051FB46D1C009DDCB0 /* Project object */;
+}
