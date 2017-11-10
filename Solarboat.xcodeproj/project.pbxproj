@@ -14,6 +14,8 @@
 		C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */; };
 		C82982261FB46D1D009DDCB0 /* SolarboatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */; };
 		C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */; };
+		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
+		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,9 @@
 		C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolarboatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarboatUITests.swift; sourceTree = "<group>"; };
 		C82982321FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 				C82982241FB46D1D009DDCB0 /* SolarboatTests */,
 				C829822F1FB46D1D009DDCB0 /* SolarboatUITests */,
 				C829820E1FB46D1C009DDCB0 /* Products */,
+				C8E048EB1FB5FFD5001F971B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +104,11 @@
 		C829820F1FB46D1C009DDCB0 /* Solarboat */ = {
 			isa = PBXGroup;
 			children = (
+				C8E048F01FB60D9E001F971B /* Fonts */,
+				C8DE0D791FB4700600E881CC /* Storyboards */,
+				C8DE0D7A1FB4701700E881CC /* ViewControllers */,
 				C82982101FB46D1D009DDCB0 /* AppDelegate.swift */,
-				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
-				C82982141FB46D1D009DDCB0 /* Main.storyboard */,
 				C82982171FB46D1D009DDCB0 /* Assets.xcassets */,
-				C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */,
 				C829821C1FB46D1D009DDCB0 /* Info.plist */,
 			);
 			path = Solarboat;
@@ -123,6 +130,40 @@
 				C82982321FB46D1D009DDCB0 /* Info.plist */,
 			);
 			path = SolarboatUITests;
+			sourceTree = "<group>";
+		};
+		C8DE0D791FB4700600E881CC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */,
+				C82982141FB46D1D009DDCB0 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C8DE0D7A1FB4701700E881CC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
+				C8E048EE1FB60003001F971B /* MapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C8E048EB1FB5FFD5001F971B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8E048EC1FB5FFD5001F971B /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8E048F01FB60D9E001F971B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C8E048F11FB60DB0001F971B /* FTB.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
+				C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */,
 				C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
