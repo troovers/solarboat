@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -38,6 +38,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         
+        tableView.dataSource = self
+        
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setImage(UIImage(named: "mapIcon"), for: .normal)
         self.navigationItem.titleView = button
@@ -48,6 +50,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: BoatInformationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationTableCell", for: indexPath) as! BoatInformationTableViewCell
+        
+        cell.icon?.image = UIImage(named: "settingsIcon")
+        cell.label?.text = "text"
+        
+        return cell
     }
     
 
