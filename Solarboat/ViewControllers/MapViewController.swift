@@ -14,8 +14,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    var menuCollapsed: Bool = false
+    
     @IBAction func menuButton(_ sender: Any) {
         // Collapse or expand the tableview
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            if(self.menuCollapsed) {
+                self.tableView.frame.origin.x += 100
+                self.menuCollapsed = false
+            } else {
+                self.tableView.frame.origin.x -= 100
+                self.menuCollapsed = true
+            }
+        }, completion: nil)
     }
     
     @IBOutlet weak var mapView: MKMapView!
