@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */; };
+		C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E41FB732FF00258EC3 /* InformationViewController.swift */; };
+		C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */; };
+		C82071E91FB7451100258EC3 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E81FB7451100258EC3 /* FirstPageViewController.swift */; };
+		C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071EA1FB7452E00258EC3 /* SecondPageViewController.swift */; };
+		C82071EF1FB74A4500258EC3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */; };
 		C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982101FB46D1D009DDCB0 /* AppDelegate.swift */; };
 		C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982121FB46D1D009DDCB0 /* ViewController.swift */; };
 		C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982141FB46D1D009DDCB0 /* Main.storyboard */; };
@@ -36,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatInformationTableViewCell.swift; sourceTree = "<group>"; };
+		C82071E41FB732FF00258EC3 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPageViewController.swift; sourceTree = "<group>"; };
+		C82071E81FB7451100258EC3 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		C82071EA1FB7452E00258EC3 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C829820D1FB46D1C009DDCB0 /* Solarboat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solarboat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82982101FB46D1D009DDCB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C82982121FB46D1D009DDCB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C82071ED1FB7454000258EC3 /* PageViews */ = {
+			isa = PBXGroup;
+			children = (
+				C82071E81FB7451100258EC3 /* FirstPageViewController.swift */,
+				C82071EA1FB7452E00258EC3 /* SecondPageViewController.swift */,
+			);
+			path = PageViews;
+			sourceTree = "<group>";
+		};
 		C82982041FB46D1C009DDCB0 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +167,11 @@
 			children = (
 				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
 				C8E048EE1FB60003001F971B /* MapViewController.swift */,
+				C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */,
+				C82071E41FB732FF00258EC3 /* InformationViewController.swift */,
+				C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */,
+				C82071ED1FB7454000258EC3 /* PageViews */,
+				C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,9 +326,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */,
+				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
+				C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */,
 				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
+				C82071EF1FB74A4500258EC3 /* TabBarViewController.swift in Sources */,
+				C82071E91FB7451100258EC3 /* FirstPageViewController.swift in Sources */,
 				C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */,
 				C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */,
+				C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
