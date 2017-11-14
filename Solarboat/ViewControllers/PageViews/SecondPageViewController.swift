@@ -17,10 +17,6 @@ class SecondPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().backgroundColor = UIColor.clear
-
         // Do any additional setup after loading the view.
     }
 

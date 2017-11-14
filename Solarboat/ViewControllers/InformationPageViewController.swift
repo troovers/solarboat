@@ -16,6 +16,21 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
     }()
     
     var pageControl = UIPageControl()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Change the style of the navigation bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        // Change status bar color to transparent
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 0)
+        
+        // Remove the tabbar
+        self.tabBarController?.tabBar.isHidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +48,20 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         self.delegate = self
         
         configurePageControl()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // Reset the style of the navigation bar
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.view.backgroundColor = UIColor(red: 198/255, green: 0, blue: 42/255, alpha: 1)
+        
+        // Reset the status bar color
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 1)
+        
+        // Reset the tabbar
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
