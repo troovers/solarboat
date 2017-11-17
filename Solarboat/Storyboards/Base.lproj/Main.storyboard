@@ -281,41 +281,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyU-uc-PDc" userLabel="Map navigation bar">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="tintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="textShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="KAART" id="NYe-7r-KpA">
-                                        <barButtonItem key="leftBarButtonItem" image="menuIcon" id="jMh-ei-yr9">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="menuButton:" destination="ePl-HG-9Jm" id="KGh-jr-tDB"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-8z-cAq">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-vh-zNT" userLabel="LiveFeed">
-                                <rect key="frame" x="215" y="528" width="160" height="90"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Eam-vh-zNT" secondAttribute="height" multiplier="16:9" id="5hj-PL-CCN"/>
-                                    <constraint firstAttribute="height" constant="90" id="Cfx-4s-Wmp"/>
-                                    <constraint firstAttribute="width" constant="160" id="Lo4-Xu-z9a"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="eNm-bS-LUz"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-6p-xen">
                                 <rect key="frame" x="0.0" y="64" width="100" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -363,37 +331,78 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-vh-zNT" userLabel="LiveFeed">
+                                <rect key="frame" x="215" y="528" width="160" height="90"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Eam-vh-zNT" secondAttribute="height" multiplier="16:9" id="5hj-PL-CCN"/>
+                                    <constraint firstAttribute="height" constant="90" id="Cfx-4s-Wmp"/>
+                                    <constraint firstAttribute="width" constant="160" id="Lo4-Xu-z9a"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="eNm-bS-LUz"/>
+                                    <action selector="longPressLiveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="y7A-uk-j9n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="1B5-j9-dPZ"/>
-                            <constraint firstItem="NyU-uc-PDc" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="8lC-2p-P7S"/>
-                            <constraint firstItem="eYk-8z-cAq" firstAttribute="top" secondItem="NyU-uc-PDc" secondAttribute="bottom" id="FvO-Xf-1Kj"/>
+                            <constraint firstItem="eYk-8z-cAq" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="8oZ-Cu-eGz"/>
+                            <constraint firstItem="Udu-6p-xen" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="DHg-pH-to5"/>
                             <constraint firstItem="T9x-2r-vjm" firstAttribute="bottom" secondItem="Udu-6p-xen" secondAttribute="bottom" id="N6N-RH-BqM"/>
                             <constraint firstItem="Eam-vh-zNT" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="QZa-nc-pd1"/>
                             <constraint firstItem="Eam-vh-zNT" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="U9x-Qo-LKR"/>
-                            <constraint firstItem="NyU-uc-PDc" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="Wt2-RK-0ur"/>
-                            <constraint firstItem="Udu-6p-xen" firstAttribute="top" secondItem="NyU-uc-PDc" secondAttribute="bottom" id="ZCq-VN-Ggs"/>
-                            <constraint firstAttribute="trailing" secondItem="NyU-uc-PDc" secondAttribute="trailing" id="bnI-KD-qlz"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="fAw-cR-L2g"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="frd-9T-12s"/>
                             <constraint firstItem="Udu-6p-xen" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="gYR-Y9-R0O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T9x-2r-vjm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Kaart" image="mapIcon" id="vTe-6K-Hir"/>
+                    <navigationItem key="navigationItem" title="KAART" id="7In-Uf-on4">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="iiQ-cl-NaH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bYU-4I-IHq">
+                                <rect key="frame" x="16" y="9.5" width="79" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="menuIcon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuButton:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="7U1-fX-bFZ"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="liveFeed" destination="Eam-vh-zNT" id="cMF-ht-bW5"/>
                         <outlet property="mapView" destination="eYk-8z-cAq" id="f8P-fy-5fe"/>
                         <outlet property="mapViewTabBarConstraint" destination="1B5-j9-dPZ" id="XJI-kO-jjF"/>
-                        <outlet property="menuButton" destination="jMh-ei-yr9" id="4nV-tX-Gbk"/>
-                        <outlet property="navigationBar" destination="NyU-uc-PDc" id="zUn-qS-YgE"/>
+                        <outlet property="menuButton" destination="iiQ-cl-NaH" id="Pkb-H8-DBV"/>
                         <outlet property="tableView" destination="Udu-6p-xen" id="kTI-eH-djr"/>
+                        <segue destination="LrY-h9-jql" kind="show" identifier="showTeamVideoSegue" action="showDetailViewController:sender:" id="JTb-od-Fce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdU-qE-Bvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="-372.86356821589209"/>
+            <point key="canvasLocation" x="1654" y="-374"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f8U-aX-9dg">
+            <objects>
+                <viewController id="LrY-h9-jql" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z2e-Bb-UKh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="H5o-Dz-Vp0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kaw-pu-7f7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2585" y="-374"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="vG7-5r-VHw">
@@ -408,7 +417,7 @@
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="JZJ-Mg-eCL" id="eT9-8t-3wu"/>
-                        <segue destination="ePl-HG-9Jm" kind="relationship" relationship="viewControllers" id="3iw-9u-Ief"/>
+                        <segue destination="ir5-CP-GBc" kind="relationship" relationship="viewControllers" id="3iw-9u-Ief"/>
                         <segue destination="SUf-8T-Iv6" kind="relationship" relationship="viewControllers" id="YMM-qT-goc"/>
                         <segue destination="Aek-gf-bft" kind="relationship" relationship="viewControllers" id="rn0-9A-P2h"/>
                     </connections>
@@ -439,6 +448,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hj-o2-o6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747.20000000000005" y="331.0344827586207"/>
+        </scene>
+        <!--Kaart-->
+        <scene sceneID="gTo-hF-VxL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ir5-CP-GBc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kaart" image="mapIcon" id="vTe-6K-Hir"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jsE-ch-bvm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ePl-HG-9Jm" kind="relationship" relationship="rootViewController" id="GBi-9y-cMA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cVv-ZR-Uhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.20000000000005" y="-373.31334332833586"/>
         </scene>
     </scenes>
     <resources>

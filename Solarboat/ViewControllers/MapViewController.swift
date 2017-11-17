@@ -11,7 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var menuCollapsed: Bool = false
@@ -36,7 +35,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     
     @IBAction func liveFeed(_ sender: Any) {
         let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
-        let navBarHeight = self.navigationBar.frame.size.height
         let mapViewFrame = mapView.frame
         
         if !liveFeedIsExpanded {
@@ -78,6 +76,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         liveFeedIsExpanded = !liveFeedIsExpanded
     }
     
+    @IBAction func longPressLiveFeed(_ sender: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "showTeamVideoSegue", sender: nil)
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapViewTabBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -92,10 +94,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         mapView.delegate = self
         
         tableView.dataSource = self
-        
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        button.setImage(UIImage(named: "mapIcon"), for: .normal)
-        self.navigationItem.titleView = button
 
         // Do any additional setup after loading the view.
         data[0] = [
@@ -134,6 +132,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             let indexPath = IndexPath(item: 0, section: 1)
             self.tableView.reloadRows(at: [indexPath], with: .top)
         }
+    }
+    
+    func longPressOnLiveFeed() {
+        // Navigate to the video of the teams
+        
+        performSegue(withIdentifier: "showTemVideoSegue", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
