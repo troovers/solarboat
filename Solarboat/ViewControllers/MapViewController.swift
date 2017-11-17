@@ -30,7 +30,56 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         }, completion: nil)
     }
     
+    @IBOutlet weak var liveFeed: UIButton!
+    
+    var liveFeedIsExpanded: Bool = false
+    
+    @IBAction func liveFeed(_ sender: Any) {
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
+        let navBarHeight = self.navigationBar.frame.size.height
+        let mapViewFrame = mapView.frame
+        
+        if !liveFeedIsExpanded {
+            
+            let height = self.view.frame.width * 9 / 16
+            
+            //Expand the video
+            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                let y = self.view.frame.height - height - tabBarHeight!
+                
+                self.liveFeed.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
+                self.liveFeed.layoutSubviews()
+                
+                self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height - height)
+                self.mapView.layoutSubviews()
+                
+            }, completion: { (finished: Bool) in
+                
+            })
+        } else {
+            //Shrink the video again
+            
+            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
+                self.mapView.layoutSubviews()
+                
+                let x = self.view.frame.width - 160
+                let y = self.view.frame.height - 90 - tabBarHeight!
+                
+                self.liveFeed.transform = CGAffineTransform.identity
+                self.liveFeed.frame = CGRect(x: x, y: y, width: 160, height: 90)
+                self.liveFeed.layoutSubviews()
+            }, completion: { (finished: Bool) in
+                
+            })
+        }
+        
+        liveFeedIsExpanded = !liveFeedIsExpanded
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapViewTabBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
     let sections : [Int: String] = [0: "BOOT", 1: "WEER"]

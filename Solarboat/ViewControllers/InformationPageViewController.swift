@@ -124,9 +124,10 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50))
         self.pageControl.numberOfPages = orderedViewControllers.count
         self.pageControl.currentPage = 0
-        self.pageControl.tintColor = UIColor.black
+        self.pageControl.tintColor = UIColor(red: 192/255, green: 0, blue: 42/255, alpha: 1)
         self.pageControl.pageIndicatorTintColor = UIColor.white
-        self.pageControl.currentPageIndicatorTintColor = UIColor.black
+        self.pageControl.currentPageIndicatorTintColor = UIColor(red: 192/255, green: 0, blue: 42/255, alpha: 1)
+        self.pageControl.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         self.view.addSubview(pageControl)
     }
     

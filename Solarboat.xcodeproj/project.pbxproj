@@ -22,6 +22,7 @@
 		C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
+		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +303,7 @@
 				C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */,
 				C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */,
 				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
+				C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

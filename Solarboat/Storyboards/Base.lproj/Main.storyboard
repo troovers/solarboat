@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -299,9 +300,22 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-8z-cAq">
-                                <rect key="frame" x="0.0" y="68" width="375" height="550"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-8z-cAq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-vh-zNT" userLabel="LiveFeed">
+                                <rect key="frame" x="215" y="528" width="160" height="90"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Eam-vh-zNT" secondAttribute="height" multiplier="16:9" id="5hj-PL-CCN"/>
+                                    <constraint firstAttribute="height" constant="90" id="Cfx-4s-Wmp"/>
+                                    <constraint firstAttribute="width" constant="160" id="Lo4-Xu-z9a"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="eNm-bS-LUz"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-6p-xen">
                                 <rect key="frame" x="0.0" y="64" width="100" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -320,13 +334,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="edo-ec-1GE" userLabel="boatInformationIcon">
-                                                    <rect key="frame" x="10" y="10" width="20" height="39.5"/>
+                                                    <rect key="frame" x="10" y="10" width="20" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="PUU-Jc-X4f"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqk-HO-zWL" userLabel="boatInformationLabel">
-                                                    <rect key="frame" x="45" y="20" width="57" height="14.5"/>
+                                                    <rect key="frame" x="45" y="20" width="57" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -356,6 +370,8 @@
                             <constraint firstItem="NyU-uc-PDc" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="8lC-2p-P7S"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="top" secondItem="NyU-uc-PDc" secondAttribute="bottom" id="FvO-Xf-1Kj"/>
                             <constraint firstItem="T9x-2r-vjm" firstAttribute="bottom" secondItem="Udu-6p-xen" secondAttribute="bottom" id="N6N-RH-BqM"/>
+                            <constraint firstItem="Eam-vh-zNT" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="QZa-nc-pd1"/>
+                            <constraint firstItem="Eam-vh-zNT" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="U9x-Qo-LKR"/>
                             <constraint firstItem="NyU-uc-PDc" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="Wt2-RK-0ur"/>
                             <constraint firstItem="Udu-6p-xen" firstAttribute="top" secondItem="NyU-uc-PDc" secondAttribute="bottom" id="ZCq-VN-Ggs"/>
                             <constraint firstAttribute="trailing" secondItem="NyU-uc-PDc" secondAttribute="trailing" id="bnI-KD-qlz"/>
@@ -367,7 +383,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Kaart" image="mapIcon" id="vTe-6K-Hir"/>
                     <connections>
+                        <outlet property="liveFeed" destination="Eam-vh-zNT" id="cMF-ht-bW5"/>
                         <outlet property="mapView" destination="eYk-8z-cAq" id="f8P-fy-5fe"/>
+                        <outlet property="mapViewTabBarConstraint" destination="1B5-j9-dPZ" id="XJI-kO-jjF"/>
                         <outlet property="menuButton" destination="jMh-ei-yr9" id="4nV-tX-Gbk"/>
                         <outlet property="navigationBar" destination="NyU-uc-PDc" id="zUn-qS-YgE"/>
                         <outlet property="tableView" destination="Udu-6p-xen" id="kTI-eH-djr"/>
