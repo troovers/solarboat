@@ -10,6 +10,7 @@ import Foundation
 
 class SettingsBundleHelper {
     struct SettingsBundleKeys {
+        /// Settings key for displaying the live feed
         static let displayLivefeed = "DISPLAY_LIVEFEED"
         static let teamPassword = "TEAM_PASSWORD"
     }

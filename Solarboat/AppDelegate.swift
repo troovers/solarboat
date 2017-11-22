@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         
-        //Change status bar color
+        // Change status bar color
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 1)
         
@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reachability = note.object as! Reachability
         let viewController: UIViewController = getTopViewController()
         
+        // Check whether we have a connection to the internet
         switch reachability.connection {
             case .wifi:
                 if !connected {
@@ -99,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
+        // Stop observing changes in the connectivity
         reachability.stopNotifier()
         NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }

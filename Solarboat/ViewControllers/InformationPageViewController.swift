@@ -10,6 +10,7 @@ import UIKit
 
 class InformationPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+    /// The viewcontrollers which the user can slide through
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(viewController: "firstPageView"),
                 self.newViewController(viewController: "secondPageView")]
@@ -32,11 +33,13 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         self.tabBarController?.tabBar.isHidden = true
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dataSource = self
-        
+        self.delegate = self
+
         // This sets up the first view that will show up on our page control
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
@@ -45,10 +48,9 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
                                completion: nil)
         }
         
-        self.delegate = self
-        
         configurePageControl()
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         // Reset the style of the navigation bar
@@ -64,16 +66,21 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     func newViewController(viewController: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewController)
     }
     
-    // MARK: Data source functions.
+    
+    /**
+     Sliding pageViews to the right
+     */
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
@@ -96,6 +103,10 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         return orderedViewControllers[previousIndex]
     }
     
+    
+    /**
+     Sliding pageViews to the left
+     */
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
@@ -119,6 +130,10 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         return orderedViewControllers[nextIndex]
     }
     
+    
+    /**
+     Configure the way the dots are shown
+     */
     func configurePageControl() {
         // The total number of pages that are available is based on how many available colors we have.
         pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50))
@@ -131,20 +146,11 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         self.view.addSubview(pageControl)
     }
     
-    // MARK: Delegate functions
+    /**
+     Delegate functions
+     */
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
         self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)!
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,6 +10,13 @@ import UIKit
 
 extension UIViewController {
     
+    /**
+     Show a toast on the selected view controller
+     - Parameter message: The message to be shown
+     - Parameter errorCode: Based on HTTP codes, used as a tag on the toast
+     - Paramater warning: Whether it's a warning, or information toast
+     - Parameter hideAfter: If greater than 0, hide the toast after this amount of seconds
+     */
     func showToast(message: String, errorCode: Int = 200, warning: Bool = false, hideAfter: Double = 0) {
         
         let toastLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - 120, width: self.view.frame.size.width - 50, height: 50))
@@ -32,6 +39,10 @@ extension UIViewController {
     }
     
     
+    /**
+     Hide the toast with the following tag / errorCode
+     - Paramater tag: The tag to identify the label
+     */
     func hideToast(tag: Int) {
         for subview in self.view.subviews {
             if (subview.tag == tag) {
@@ -41,6 +52,11 @@ extension UIViewController {
     }
     
     
+    /**
+     Animate the hiding of the toast
+     - Parameter view: The view / toast to hide
+     - Paramater delay: After this amount of seconds, the toast is faded out
+     */
     func animateHiding(view: UIView, delay: Double) {
         UIView.animate(withDuration: 0.5, delay: delay, options: .curveEaseOut, animations: {
             view.alpha = 0.0
