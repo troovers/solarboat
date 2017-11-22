@@ -20,6 +20,11 @@
 		C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */; };
 		C82982261FB46D1D009DDCB0 /* SolarboatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */; };
 		C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */; };
+		C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */; };
+		C87305991FC5D05100B68049 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305981FC5D05100B68049 /* Reachability.swift */; };
+		C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A21FC5F54E00B68049 /* MessageViewController.swift */; };
+		C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8825F801FC5C1F100B9E30E /* Settings.bundle */; };
+		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
 		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
@@ -62,6 +67,11 @@
 		C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolarboatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarboatUITests.swift; sourceTree = "<group>"; };
 		C82982321FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		C87305981FC5D05100B68049 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		C87305A21FC5F54E00B68049 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		C8825F801FC5C1F100B9E30E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Solarboat/Settings.bundle; sourceTree = "<group>"; };
+		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
@@ -105,6 +115,8 @@
 		C82982041FB46D1C009DDCB0 = {
 			isa = PBXGroup;
 			children = (
+				C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */,
+				C8825F801FC5C1F100B9E30E /* Settings.bundle */,
 				C829820F1FB46D1C009DDCB0 /* Solarboat */,
 				C82982241FB46D1D009DDCB0 /* SolarboatTests */,
 				C829822F1FB46D1D009DDCB0 /* SolarboatUITests */,
@@ -132,6 +144,8 @@
 				C82982101FB46D1D009DDCB0 /* AppDelegate.swift */,
 				C82982171FB46D1D009DDCB0 /* Assets.xcassets */,
 				C829821C1FB46D1D009DDCB0 /* Info.plist */,
+				C87305971FC5CBD300B68049 /* Extensions */,
+				C87305981FC5D05100B68049 /* Reachability.swift */,
 			);
 			path = Solarboat;
 			sourceTree = "<group>";
@@ -154,6 +168,14 @@
 			path = SolarboatUITests;
 			sourceTree = "<group>";
 		};
+		C87305971FC5CBD300B68049 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C8DE0D791FB4700600E881CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +195,7 @@
 				C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */,
 				C82071ED1FB7454000258EC3 /* PageViews */,
 				C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */,
+				C87305A21FC5F54E00B68049 /* MessageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -261,7 +284,8 @@
 				TargetAttributes = {
 					C829820C1FB46D1C009DDCB0 = {
 						CreatedOnToolsVersion = 9.0.1;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					C82982201FB46D1D009DDCB0 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -302,6 +326,7 @@
 			files = (
 				C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */,
 				C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */,
+				C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */,
 				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
 				C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */,
 			);
@@ -329,13 +354,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */,
+				C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
+				C87305991FC5D05100B68049 /* Reachability.swift in Sources */,
 				C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */,
 				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
 				C82071EF1FB74A4500258EC3 /* TabBarViewController.swift in Sources */,
 				C82071E91FB7451100258EC3 /* FirstPageViewController.swift in Sources */,
 				C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */,
 				C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */,
+				C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */,
+				C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */,
 				C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,11 +531,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = AL2Y34Z94B;
 				INFOPLIST_FILE = Solarboat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.Solarboat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "552fd557-65d7-4e17-84c9-6391647afe14";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard provisioning profile";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -516,11 +551,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = AL2Y34Z94B;
 				INFOPLIST_FILE = Solarboat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.avans.mad.Solarboat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "552fd557-65d7-4e17-84c9-6391647afe14";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard provisioning profile";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

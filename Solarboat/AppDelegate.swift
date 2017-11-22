@@ -12,7 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    private var reachability: Reachability = Reachability()!
+    private var connected: Bool = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
@@ -21,9 +23,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 1)
         
+        // Initialize a network connectivity observer
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("could not start reachability notifier")
+        }
         
         // Override point for customization after application launch.
         return true
+    }
+    
+    // The internet connectivity has changed
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        let viewController: UIViewController = getTopViewController()
+        
+        switch reachability.connection {
+            case .wifi:
+                if !connected {
+                    viewController.hideToast(tag: 500)
+                }
+                
+                connected = true
+            case .cellular:
+                if !connected {
+                    viewController.hideToast(tag: 500)
+                }
+                
+                connected = true
+            case .none:
+                // Display a toast when the connection went dark
+                if connected {
+                    viewController.showToast(message: "Er is geen internetverbinding", errorCode: 500, warning: true, hideAfter: 0)
+                    
+                    connected = false
+                }
+        }
+    }
+    
+    func getTopViewController() -> UIViewController {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            return topController
+        }
+        
+        return UIViewController()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -42,10 +92,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+        SettingsBundleHelper.setVersionAndBuildNumber()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
 
 

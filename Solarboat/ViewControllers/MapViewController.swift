@@ -34,51 +34,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     var liveFeedIsExpanded: Bool = false
     
     @IBAction func liveFeed(_ sender: Any) {
-        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
-        let mapViewFrame = mapView.frame
         
         if !liveFeedIsExpanded {
-            
-            let height = self.view.frame.width * 9 / 16
-            
-            //Expand the video
-            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                
-                let y = self.view.frame.height - height - tabBarHeight!
-                
-                self.liveFeed.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
-                self.liveFeed.layoutSubviews()
-                
-                self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height - height)
-                self.mapView.layoutSubviews()
-                
-            }, completion: { (finished: Bool) in
-                
-            })
+            expandLiveFeed()
         } else {
-            //Shrink the video again
-            
-            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
-                self.mapView.layoutSubviews()
-                
-                let x = self.view.frame.width - 160
-                let y = self.view.frame.height - 90 - tabBarHeight!
-                
-                self.liveFeed.transform = CGAffineTransform.identity
-                self.liveFeed.frame = CGRect(x: x, y: y, width: 160, height: 90)
-                self.liveFeed.layoutSubviews()
-            }, completion: { (finished: Bool) in
-                
-            })
+            shrinkLiveFeed()
         }
         
         liveFeedIsExpanded = !liveFeedIsExpanded
-    }
-    
-    @IBAction func longPressLiveFeed(_ sender: UILongPressGestureRecognizer) {
-        performSegue(withIdentifier: "showTeamVideoSegue", sender: nil)
-    }
+    }    
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapViewTabBarConstraint: NSLayoutConstraint!
@@ -91,9 +55,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerSettingsBundle()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        
+        defaultsChanged()
+        
         mapView.delegate = self
         
         tableView.dataSource = self
+        
+        // Bring the table view to the front
+        tableView.superview?.bringSubview(toFront: tableView)
 
         // Do any additional setup after loading the view.
         data[0] = [
@@ -134,29 +107,107 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         }
     }
     
+    
+    // Register the settings bundle to check for changes
+    func registerSettingsBundle(){
+        let appDefaults = [String:AnyObject]()
+        
+        UserDefaults.standard.register(defaults: appDefaults)
+    }
+    
+    
+    // The settings have been altered, check to see if we need to remove or show the livefeed
+    @objc func defaultsChanged(){
+        if UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.displayLivefeed) {
+            self.liveFeed.isHidden = false
+        } else {
+            self.liveFeed.isHidden = true
+            
+            if liveFeedIsExpanded {
+                shrinkLiveFeed()
+                
+                liveFeedIsExpanded = false
+            }
+        }
+    }
+    
+    
+    // Expand the livefeed
+    func expandLiveFeed() {
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
+        let mapViewFrame = mapView.frame
+        let height = self.view.frame.width * 9 / 16
+        
+        //Expand the video
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            let y = self.view.frame.height - height - tabBarHeight!
+            
+            self.liveFeed.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
+            self.liveFeed.layoutSubviews()
+            
+            self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height - height)
+            self.mapView.layoutSubviews()
+            
+        }, completion: { (finished: Bool) in
+            
+        })
+    }
+    
+    
+    // Shrink the livefeed
+    func shrinkLiveFeed() {
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
+        let mapViewFrame = mapView.frame
+        
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
+            self.mapView.layoutSubviews()
+            
+            let x = self.view.frame.width - 160
+            let y = self.view.frame.height - 90 - tabBarHeight!
+            
+            self.liveFeed.transform = CGAffineTransform.identity
+            self.liveFeed.frame = CGRect(x: x, y: y, width: 160, height: 90)
+            self.liveFeed.layoutSubviews()
+        }, completion: { (finished: Bool) in
+            
+        })
+    }
+    
+    
     func longPressOnLiveFeed() {
         // Navigate to the video of the teams
         
         performSegue(withIdentifier: "showTemVideoSegue", sender: nil)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // Set the number of sections in the tableview
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
+    
+    // Set the number of rows in the tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (tableData[section]?.count)!
     }
     
+    
+    // Set the title for the section
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section]
     }
     
+    
+    // Generate the cell for the index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: BoatInformationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationTableCell", for: indexPath) as! BoatInformationTableViewCell
         
@@ -171,6 +222,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         return cell
     }
     
+    
+    // Style the sections of the tableview
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.black
@@ -178,8 +231,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         return headerView
     }
     
+    
+    // Set the height for the section header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
+    }
+    
+    
+    // Not needed for iOS9 and above. ARC deals with the observer in higher versions.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 
