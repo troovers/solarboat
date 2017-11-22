@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SocketIO
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource {
 
@@ -111,6 +112,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             
             let indexPath = IndexPath(item: 0, section: 1)
             self.tableView.reloadRows(at: [indexPath], with: .top)
+        }
+        
+        initializeSocketConnection()
+    }
+    
+    
+    func initializeSocketConnection() {
+        let manager = SocketManager(socketURL: URL(string: "http://icytea.nl")!, config: [.log(true), .compress])
+        let socket = manager.defaultSocket
+        
+        socket.on(clientEvent: .connect) {data, ack in
+            print("socket connected")
+        }
+        
+        socket.on("boatUpdate") {data, ack in
+            print(data)
+        }
+        
+        socket.connect()
+        
+        socket.connect(timeoutAfter: 10) {
+            socket.emit("registerDevice")
         }
     }
     

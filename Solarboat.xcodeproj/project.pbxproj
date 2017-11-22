@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C70AD376C87B0C2694F88BA /* Pods_Solarboat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA00CB58D7B81F73B5C30B8 /* Pods_Solarboat.framework */; };
 		C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */; };
 		C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E41FB732FF00258EC3 /* InformationViewController.swift */; };
 		C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3DAA7447936486A5368608C9 /* Pods-Solarboat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solarboat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat.release.xcconfig"; sourceTree = "<group>"; };
+		A724E399097B0CCA1A785CE9 /* Pods-Solarboat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solarboat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat.debug.xcconfig"; sourceTree = "<group>"; };
 		C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatInformationTableViewCell.swift; sourceTree = "<group>"; };
 		C82071E41FB732FF00258EC3 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPageViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
+		ECA00CB58D7B81F73B5C30B8 /* Pods_Solarboat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solarboat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */,
+				2C70AD376C87B0C2694F88BA /* Pods_Solarboat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C63740E41AE373AD457BA8E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A724E399097B0CCA1A785CE9 /* Pods-Solarboat.debug.xcconfig */,
+				3DAA7447936486A5368608C9 /* Pods-Solarboat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C82071ED1FB7454000258EC3 /* PageViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +136,7 @@
 				C829822F1FB46D1D009DDCB0 /* SolarboatUITests */,
 				C829820E1FB46D1C009DDCB0 /* Products */,
 				C8E048EB1FB5FFD5001F971B /* Frameworks */,
+				2C63740E41AE373AD457BA8E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				C8E048EC1FB5FFD5001F971B /* MapKit.framework */,
+				ECA00CB58D7B81F73B5C30B8 /* Pods_Solarboat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C82982351FB46D1D009DDCB0 /* Build configuration list for PBXNativeTarget "Solarboat" */;
 			buildPhases = (
+				B4A5CA39443E697CE53975F5 /* [CP] Check Pods Manifest.lock */,
 				C82982091FB46D1C009DDCB0 /* Sources */,
 				C829820A1FB46D1C009DDCB0 /* Frameworks */,
 				C829820B1FB46D1C009DDCB0 /* Resources */,
+				3D835ADB81C497C42A445156 /* [CP] Embed Pods Frameworks */,
+				CC7680BD271F7C781C2E53F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,6 +366,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D835ADB81C497C42A445156 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4A5CA39443E697CE53975F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Solarboat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC7680BD271F7C781C2E53F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C82982091FB46D1C009DDCB0 /* Sources */ = {
@@ -529,6 +604,7 @@
 		};
 		C82982361FB46D1D009DDCB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A724E399097B0CCA1A785CE9 /* Pods-Solarboat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -549,6 +625,7 @@
 		};
 		C82982371FB46D1D009DDCB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DAA7447936486A5368608C9 /* Pods-Solarboat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
