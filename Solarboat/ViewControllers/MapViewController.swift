@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SocketIO
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource {
 
@@ -54,6 +55,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     
     /// The complete set of data for inside the tableview
     var tableData = [Int: [Int: [String: String]]]()
+    
+    private let socketManager: SocketManager = SocketManager(socketURL: URL(string: "http://icytea.nl")!, config: [.log(true), .compress])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,13 +108,59 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         // Add the weather section
         tableData[1] = data
         
-        let when = DispatchTime.now() + 10 
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.tableData[1]![0]?.updateValue("10 km/h", forKey: "text")
+        // Add the socket handlers
+        addSocketHandlers()
+    }
+    
+    
+    /**
+     Add the handlers for the socket connection
+     */
+    func addSocketHandlers() {
+        let socket = socketManager.defaultSocket
+
+        socket.on(clientEvent: .connect) {data, ack in
+            // Socket is connected
             
-            let indexPath = IndexPath(item: 0, section: 1)
-            self.tableView.reloadRows(at: [indexPath], with: .top)
+            socket.emit("registerDevice", ["text"])
+            
+            socket.emit("fakeUpdate", "")
         }
+        
+        socket.on("boatUpdate") {data, ack in
+            
+            let object = data[0] as! [String:Any]
+            
+            if let boatUpdate = object["info"] as? [String:Any] {
+                let rpm = boatUpdate["rpm"] as! Double
+                let speed = boatUpdate["speed"] as! Double
+                
+                var latitude = 0.0
+                var longitude = 0.0
+                
+                if let location = boatUpdate["location"] as? [String:String] {
+                    latitude = Double(location["latitude"]!)!
+                    longitude = Double(location["longitude"]!)!
+                }
+                
+                let boatUpdate = BoatUpdate(rpm: rpm, speed: speed, latitude: latitude, longitude: longitude)
+                
+                self.reloadRows(boatUpdate: boatUpdate)
+            }
+        }
+        
+        socket.connect()
+    }
+    
+    
+    /**
+     Reload the rows after a boatUpdate
+     */
+    func reloadRows(boatUpdate: BoatUpdate) {
+        self.tableData[0]![0]?.updateValue("\(boatUpdate.speed) km/h", forKey: "text")
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .top)
     }
     
     
