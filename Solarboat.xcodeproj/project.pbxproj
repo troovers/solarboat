@@ -24,6 +24,7 @@
 		C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */; };
 		C87305991FC5D05100B68049 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305981FC5D05100B68049 /* Reachability.swift */; };
 		C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A21FC5F54E00B68049 /* MessageViewController.swift */; };
+		C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A81FC6CE3000B68049 /* BoatUpdate.swift */; };
 		C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8825F801FC5C1F100B9E30E /* Settings.bundle */; };
 		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
@@ -73,6 +74,7 @@
 		C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C87305981FC5D05100B68049 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C87305A21FC5F54E00B68049 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		C87305A81FC6CE3000B68049 /* BoatUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatUpdate.swift; sourceTree = "<group>"; };
 		C8825F801FC5C1F100B9E30E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Solarboat/Settings.bundle; sourceTree = "<group>"; };
 		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -153,6 +155,7 @@
 		C829820F1FB46D1C009DDCB0 /* Solarboat */ = {
 			isa = PBXGroup;
 			children = (
+				C87305A71FC6CE1F00B68049 /* Models */,
 				C8E048F01FB60D9E001F971B /* Fonts */,
 				C8DE0D791FB4700600E881CC /* Storyboards */,
 				C8DE0D7A1FB4701700E881CC /* ViewControllers */,
@@ -189,6 +192,14 @@
 				C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C87305A71FC6CE1F00B68049 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C87305A81FC6CE3000B68049 /* BoatUpdate.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C8DE0D791FB4700600E881CC /* Storyboards */ = {
@@ -430,6 +441,7 @@
 			files = (
 				C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */,
 				C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */,
+				C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
 				C87305991FC5D05100B68049 /* Reachability.swift in Sources */,
 				C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */,
