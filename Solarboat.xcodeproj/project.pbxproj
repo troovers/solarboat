@@ -25,6 +25,7 @@
 		C87305991FC5D05100B68049 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305981FC5D05100B68049 /* Reachability.swift */; };
 		C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A21FC5F54E00B68049 /* MessageViewController.swift */; };
 		C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A81FC6CE3000B68049 /* BoatUpdate.swift */; };
+		C87305AB1FC8764600B68049 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87305AA1FC8764600B68049 /* UserData.plist */; };
 		C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8825F801FC5C1F100B9E30E /* Settings.bundle */; };
 		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
@@ -75,6 +76,7 @@
 		C87305981FC5D05100B68049 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C87305A21FC5F54E00B68049 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		C87305A81FC6CE3000B68049 /* BoatUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatUpdate.swift; sourceTree = "<group>"; };
+		C87305AA1FC8764600B68049 /* UserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		C8825F801FC5C1F100B9E30E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Solarboat/Settings.bundle; sourceTree = "<group>"; };
 		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -164,6 +166,7 @@
 				C829821C1FB46D1D009DDCB0 /* Info.plist */,
 				C87305971FC5CBD300B68049 /* Extensions */,
 				C87305981FC5D05100B68049 /* Reachability.swift */,
+				C87305AA1FC8764600B68049 /* UserData.plist */,
 			);
 			path = Solarboat;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */,
 				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
 				C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */,
+				C87305AB1FC8764600B68049 /* UserData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,11 +392,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyPlistManager/SwiftyPlistManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPlistManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

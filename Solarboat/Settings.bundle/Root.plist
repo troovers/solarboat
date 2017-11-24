@@ -10,7 +10,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Camera weergeven</string>
+			<string>Display livefeed</string>
 			<key>Key</key>
 			<string>DISPLAY_LIVEFEED</string>
 			<key>DefaultValue</key>
@@ -20,7 +20,7 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Team wachtwoord</string>
+			<string>Team password</string>
 			<key>Key</key>
 			<string>TEAM_PASSWORD</string>
 			<key>DefaultValue</key>
@@ -44,9 +44,11 @@
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>App versie</string>
+			<string>App version</string>
 			<key>Key</key>
 			<string>APP_VERSION</string>
+			<key>DefaultValue</key>
+			<string>1.0.0</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -55,6 +57,8 @@
 			<string>App build</string>
 			<key>Key</key>
 			<string>APP_BUILD</string>
+			<key>DefaultValue</key>
+			<string>1.0.0</string>
 		</dict>
 	</array>
 </dict>

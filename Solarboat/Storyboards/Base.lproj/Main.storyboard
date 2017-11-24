@@ -334,14 +334,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-vh-zNT" userLabel="LiveFeed">
-                                <rect key="frame" x="343" y="528" width="160" height="90"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="215" y="528" width="160" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Eam-vh-zNT" secondAttribute="height" multiplier="16:9" id="5hj-PL-CCN"/>
                                     <constraint firstAttribute="height" constant="90" id="Cfx-4s-Wmp"/>
                                     <constraint firstAttribute="width" constant="160" id="Lo4-Xu-z9a"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="splashScreenBackground"/>
                                 <connections>
                                     <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="eNm-bS-LUz"/>
                                 </connections>
@@ -441,27 +441,95 @@
                                     <constraint firstAttribute="height" constant="150" id="k72-JU-emY"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jouw naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A9G-aS-o7U" userLabel="senderNameField">
+                                <rect key="frame" x="20" y="234" width="235" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="NRI-zl-ozV"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yy-SR-mRI">
+                                <rect key="frame" x="275" y="234" width="80" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="7cm-pO-dNS"/>
+                                    <constraint firstAttribute="width" constant="80" id="9Ku-R3-ked"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Frutiger-Bold" family="Frutiger" pointSize="17"/>
+                                <state key="normal" title="OPSLAAN">
+                                    <color key="titleColor" red="0.0" green="0.67450980392156867" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveSenderName:" destination="34Y-tb-k2e" eventType="touchUpInside" id="xpI-Lj-kO4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkM-sF-CMf">
+                                <rect key="frame" x="315" y="558" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2qV-qO-E2d"/>
+                                    <constraint firstAttribute="width" constant="40" id="678-GV-CcO"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="sendImage"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="34Y-tb-k2e" eventType="touchUpInside" id="lFX-yn-f3z"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bericht" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-1y-eLa">
+                                <rect key="frame" x="20" y="558" width="275" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KDm-jE-9GB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MoT-Qj-s0o">
+                                <rect key="frame" x="0.0" y="289" width="375" height="249"/>
+                                <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="A9G-aS-o7U" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" constant="20" id="5j2-2Z-Vej"/>
                             <constraint firstItem="mbu-yJ-kAI" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" id="EIA-bT-FyB"/>
+                            <constraint firstItem="MoT-Qj-s0o" firstAttribute="top" secondItem="A9G-aS-o7U" secondAttribute="bottom" constant="20" id="EdS-68-4bW"/>
                             <constraint firstItem="WXM-q6-BiC" firstAttribute="trailing" secondItem="Gia-bt-b8Z" secondAttribute="trailing" id="Hla-aE-1BQ"/>
+                            <constraint firstItem="ku8-1y-eLa" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" constant="20" id="HzL-E3-QG1"/>
+                            <constraint firstItem="Gia-bt-b8Z" firstAttribute="bottom" secondItem="ku8-1y-eLa" secondAttribute="bottom" constant="20" id="J8P-P8-Xf5"/>
+                            <constraint firstItem="MoT-Qj-s0o" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" id="JGz-Ld-eR6"/>
                             <constraint firstItem="WXM-q6-BiC" firstAttribute="top" secondItem="0bp-kf-p1S" secondAttribute="bottom" id="Jiy-7e-f9A"/>
+                            <constraint firstItem="Gia-bt-b8Z" firstAttribute="bottom" secondItem="IkM-sF-CMf" secondAttribute="bottom" constant="20" id="MaI-g9-6uo"/>
+                            <constraint firstItem="A9G-aS-o7U" firstAttribute="top" secondItem="WXM-q6-BiC" secondAttribute="bottom" constant="20" id="P4l-Ex-TIZ"/>
+                            <constraint firstItem="Gia-bt-b8Z" firstAttribute="trailing" secondItem="MoT-Qj-s0o" secondAttribute="trailing" id="Poz-TQ-ZpE"/>
                             <constraint firstItem="WXM-q6-BiC" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" id="Tk9-O2-39P"/>
+                            <constraint firstItem="IkM-sF-CMf" firstAttribute="top" secondItem="MoT-Qj-s0o" secondAttribute="bottom" constant="20" id="WBT-Vq-4eD"/>
                             <constraint firstItem="mbu-yJ-kAI" firstAttribute="top" secondItem="0bp-kf-p1S" secondAttribute="bottom" id="YtQ-s5-G9L"/>
+                            <constraint firstItem="Gia-bt-b8Z" firstAttribute="trailing" secondItem="9yy-SR-mRI" secondAttribute="trailing" constant="20" id="et7-if-a9Q"/>
+                            <constraint firstItem="Gia-bt-b8Z" firstAttribute="trailing" secondItem="IkM-sF-CMf" secondAttribute="trailing" constant="20" id="jqP-Mj-hJ5"/>
                             <constraint firstItem="0bp-kf-p1S" firstAttribute="trailing" secondItem="Gia-bt-b8Z" secondAttribute="trailing" id="l9U-HR-Loh"/>
                             <constraint firstItem="mbu-yJ-kAI" firstAttribute="trailing" secondItem="Gia-bt-b8Z" secondAttribute="trailing" id="lBW-YT-T9f"/>
                             <constraint firstItem="0bp-kf-p1S" firstAttribute="top" secondItem="Gia-bt-b8Z" secondAttribute="top" id="luK-6a-jdB"/>
+                            <constraint firstItem="9yy-SR-mRI" firstAttribute="top" secondItem="WXM-q6-BiC" secondAttribute="bottom" constant="20" id="mG7-uc-5HI"/>
                             <constraint firstItem="0bp-kf-p1S" firstAttribute="leading" secondItem="Gia-bt-b8Z" secondAttribute="leading" id="n3m-F2-JhE"/>
+                            <constraint firstItem="9yy-SR-mRI" firstAttribute="leading" secondItem="A9G-aS-o7U" secondAttribute="trailing" constant="20" id="no7-uf-HZg"/>
+                            <constraint firstItem="IkM-sF-CMf" firstAttribute="leading" secondItem="ku8-1y-eLa" secondAttribute="trailing" constant="20" id="pAy-Pn-U8c"/>
                             <constraint firstItem="mbu-yJ-kAI" firstAttribute="top" secondItem="0bp-kf-p1S" secondAttribute="bottom" id="y07-cC-IGd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gia-bt-b8Z"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" title="Berichten" image="messageIcon" selectedImage="messageIcon" id="gXm-h0-JQP"/>
+                    <connections>
+                        <outlet property="message" destination="ku8-1y-eLa" id="0yf-1g-kXV"/>
+                        <outlet property="saveSenderNameButton" destination="9yy-SR-mRI" id="KMY-3f-9dR"/>
+                        <outlet property="sendMessageButton" destination="IkM-sF-CMf" id="Ecc-M4-fWw"/>
+                        <outlet property="senderName" destination="A9G-aS-o7U" id="os6-3u-aFI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUN-qb-65K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="-767"/>
+            <point key="canvasLocation" x="-204" y="-767.76611694152928"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="vG7-5r-VHw">
@@ -540,8 +608,10 @@
         <image name="mapIcon" width="25" height="25"/>
         <image name="menuIcon" width="25" height="25"/>
         <image name="messageIcon" width="25" height="25"/>
+        <image name="sendImage" width="50" height="50"/>
         <image name="settingsIcon" width="25" height="25"/>
         <image name="settingsPageHeader" width="1024" height="575"/>
+        <image name="splashScreenBackground" width="640" height="427"/>
     </resources>
     <color key="tintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
 </document>

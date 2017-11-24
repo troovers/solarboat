@@ -124,7 +124,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             
             socket.emit("registerDevice", ["text"])
             
-            socket.emit("fakeUpdate", "")
+            socket.emit("boatUpdate", "")
+            
+            socket.emit("streamImage", "")
         }
         
         socket.on("boatUpdate") {data, ack in
@@ -146,6 +148,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                 let boatUpdate = BoatUpdate(rpm: rpm, speed: speed, latitude: latitude, longitude: longitude)
                 
                 self.reloadRows(boatUpdate: boatUpdate)
+            }
+        }
+        
+        socket.on("streamImage") {data, ack in
+            let object = data[0] as! [String:Any]
+            
+            let image = object["image"] as? String
+            
+            //let encoded = image!.replacingOccurrences(of: "data:image/jpg;base64,/9j/", with: "")
+            let encoded = image!
+
+            if let decodedData = Data(base64Encoded: encoded, options: .ignoreUnknownCharacters) {
+                let image = UIImage(data: decodedData)
+                
+                self.liveFeed.setBackgroundImage(image, for: UIControlState.normal)
+
             }
         }
         
