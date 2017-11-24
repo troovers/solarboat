@@ -8,6 +8,7 @@
 
 import UIKit
 import SocketIO
+import SwiftyPlistManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("could not start reachability notifier")
         }
+        
+        // Start the plist manager for easy editing
+        SwiftyPlistManager.shared.start(plistNames: ["UserData"], logging: true)
         
         // Override point for customization after application launch.
         return true

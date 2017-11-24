@@ -10,6 +10,9 @@ import UIKit
 
 extension UIViewController {
     
+    static let toastTop = "top"
+    static let toastBottom = "bottom"
+    
     /**
      Show a toast on the selected view controller
      - Parameter message: The message to be shown
@@ -17,21 +20,27 @@ extension UIViewController {
      - Paramater warning: Whether it's a warning, or information toast
      - Parameter hideAfter: If greater than 0, hide the toast after this amount of seconds
      */
-    func showToast(message: String, errorCode: Int = 200, warning: Bool = false, hideAfter: Double = 0) {
+    func showToast(message: String, errorCode: Int = 200, warning: Bool = false, hideAfter: Double = 0, toastLocation: String = UIViewController.toastBottom) {
         
-        let toastLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - 120, width: self.view.frame.size.width - 50, height: 50))
+        let y = toastLocation == UIViewController.toastBottom ? self.view.frame.size.height - 120 : 100
+        
+        let toastLabel = UILabel(frame: CGRect(x: 0, y: y, width: self.view.frame.size.width - 50, height: 50))
         toastLabel.backgroundColor = warning ? UIColor.red.withAlphaComponent(0.8) : UIColor.black.withAlphaComponent(0.8)
         toastLabel.textColor = UIColor.white
         toastLabel.textAlignment = .center;
         toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
         toastLabel.text = message
-        toastLabel.alpha = 1.0
         toastLabel.tag = errorCode
         toastLabel.layer.cornerRadius = 5;
         toastLabel.clipsToBounds  =  true
         toastLabel.center.x = self.view.center.x
+        toastLabel.alpha = 0.0
         
         self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: {
+            toastLabel.alpha = 1.0
+        }, completion: nil)
         
         if hideAfter > 0 {
             self.animateHiding(view: toastLabel, delay: hideAfter)
