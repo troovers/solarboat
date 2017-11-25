@@ -20,10 +20,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         // Collapse or expand the tableview
         UIView.animate(withDuration: 0.3, animations: {
             if(self.menuCollapsed) {
-                self.tableView.frame.origin.x += 100
+                self.tableView.frame.origin.x += self.tableView.frame.size.width
                 self.menuCollapsed = false
             } else {
-                self.tableView.frame.origin.x -= 100
+                self.tableView.frame.origin.x -= self.tableView.frame.size.width
                 self.menuCollapsed = true
             }
         }, completion: nil)

@@ -1,0 +1,57 @@
+
+/* Class = "UIViewController"; title = "MessageViewController"; ObjectID = "34Y-tb-k2e"; */
+"34Y-tb-k2e.title" = "MessageViewController";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "464-P8-nHK"; */
+"464-P8-nHK.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "KAART"; ObjectID = "7In-Uf-on4"; */
+"7In-Uf-on4.title" = "KAART";
+
+/* Class = "UINavigationItem"; title = "BERICHTEN"; ObjectID = "8cE-jE-wws"; */
+"8cE-jE-wws.title" = "BERICHTEN";
+
+/* Class = "UIButton"; normalTitle = "OPSLAAN"; ObjectID = "9yy-SR-mRI"; */
+"9yy-SR-mRI.normalTitle" = "OPSLAAN";
+
+/* Class = "UITextField"; placeholder = "Jouw naam"; ObjectID = "A9G-aS-o7U"; */
+"A9G-aS-o7U.placeholder" = "Jouw naam";
+
+/* Class = "UILabel"; text = "DATE"; ObjectID = "CSx-qB-ost"; */
+"CSx-qB-ost.text" = "DATE";
+
+/* Class = "UINavigationItem"; title = "INSTELLINGEN"; ObjectID = "Eb4-oM-ctF"; */
+"Eb4-oM-ctF.title" = "INSTELLINGEN";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Iqk-HO-zWL"; */
+"Iqk-HO-zWL.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Informatie"; ObjectID = "NPG-na-QUp"; */
+"NPG-na-QUp.title" = "Informatie";
+
+/* Class = "UILabel"; text = "HEADER"; ObjectID = "StL-aq-5Bj"; */
+"StL-aq-5Bj.text" = "HEADER";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "Xls-z9-XQH"; */
+"Xls-z9-XQH.title" = "Title";
+
+/* Class = "UITabBarItem"; title = "Instellingen"; ObjectID = "Zqn-qm-UnF"; */
+"Zqn-qm-UnF.title" = "Instellingen";
+
+/* Class = "UITabBarItem"; title = "Berichten"; ObjectID = "gXm-h0-JQP"; */
+"gXm-h0-JQP.title" = "Berichten";
+
+/* Class = "UINavigationItem"; title = "INFORMATIE"; ObjectID = "hik-8U-Cnb"; */
+"hik-8U-Cnb.title" = "INFORMATIE";
+
+/* Class = "UITextField"; placeholder = "Bericht"; ObjectID = "ku8-1y-eLa"; */
+"ku8-1y-eLa.placeholder" = "Bericht";
+
+/* Class = "UIButton"; normalTitle = "MEER INFORMATIE"; ObjectID = "sIx-x8-Vgj"; */
+"sIx-x8-Vgj.normalTitle" = "MEER INFORMATIE";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "trh-z4-iKu"; */
+"trh-z4-iKu.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Kaart"; ObjectID = "vTe-6K-Hir"; */
+"vTe-6K-Hir.title" = "Kaart";
