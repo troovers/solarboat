@@ -47,14 +47,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     @IBOutlet weak var mapViewTabBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
-    /// The sections which are going to display the boat and weather info
-    let sections : [Int: String] = [0: "BOOT", 1: "WEER"]
-    
     /// The data structure of the information
     var data = [Int: [String: String]]()
     
     /// The complete set of data for inside the tableview
-    var tableData = [Int: [Int: [String: String]]]()
+    var tableData = [Int: [String: String]]()
     
     private let socketManager: SocketManager = SocketManager(socketURL: URL(string: "http://icytea.nl")!, config: [.log(true), .compress])
     
@@ -78,35 +75,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
 
         // Generate the structure of the tableview with stub data
         data[0] = [
+            "type": "header",
+            "text": "BOOT"
+        ]
+        
+        data[1] = [
+            "type": "info",
             "asset": "speed",
             "text": "5 km/h"
         ]
         
-        data[1] = [
+        data[2] = [
+            "type": "info",
             "asset": "speed",
             "text": "text"
         ]
         
-        // Add the boat section
-        tableData[0] = data
+        data[3] = [
+            "type": "header",
+            "text": "WEER"
+        ]
         
-        data[0] = [
+        data[4] = [
+            "type": "info",
             "asset": "windSpeed",
             "text": "1 km/h"
         ]
         
-        data[1] = [
+        data[5] = [
+            "type": "info",
             "asset": "windDirection",
             "text": "NO"
         ]
         
-        data[2] = [
+        data[6] = [
+            "type": "info",
             "asset": "temperature",
             "text": "15 \u{00B0}"
         ]
         
         // Add the weather section
-        tableData[1] = data
+        tableData = data
         
         // Add the socket handlers
         addSocketHandlers()
@@ -162,7 +171,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             if let decodedData = Data(base64Encoded: encoded, options: .ignoreUnknownCharacters) {
                 let image = UIImage(data: decodedData)
                 
-                self.liveFeed.setBackgroundImage(image, for: UIControlState.normal)
+                //self.liveFeed.setBackgroundImage(image, for: UIControlState.normal)
 
             }
         }
@@ -175,9 +184,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      Reload the rows after a boatUpdate
      */
     func reloadRows(boatUpdate: BoatUpdate) {
-        self.tableData[0]![0]?.updateValue("\(boatUpdate.speed) km/h", forKey: "text")
+        self.tableData[1]?.updateValue("\(boatUpdate.speed) km/h", forKey: "text")
         
-        let indexPath = IndexPath(item: 0, section: 0)
+        let indexPath = IndexPath(item: 1, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .top)
     }
     
@@ -280,7 +289,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     
     // Set the number of sections in the tableview
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return 1
     }
     
     
@@ -288,15 +297,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      Set the number of rows in the tableview
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (tableData[section]?.count)!
-    }
-    
-    
-    /**
-     Set the title for the section
-     */
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section]
+        return tableData.count
     }
     
     
@@ -304,36 +305,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      Generate the cell for the index
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: BoatInformationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationTableCell", for: indexPath) as! BoatInformationTableViewCell
-        
-        for (key, value) in tableData[indexPath.section]![indexPath.row]! {
-            if(key == "asset") {
-                cell.icon?.image = UIImage(named: value)
-            } else {
-                cell.label?.text = value
-            }
+        if indexPath.row == 0 || indexPath.row == 3 {
+            let cell: BoatInformationHeaderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationHeaderTableCell", for: indexPath) as! BoatInformationHeaderTableViewCell
+            
+            let row = tableData[indexPath.row]! as [String:String]
+            
+            cell.headerTitle.text = row["text"]
+            
+            return cell
+        } else {
+            let cell: BoatInformationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationTableCell", for: indexPath) as! BoatInformationTableViewCell
+            
+            let row = tableData[indexPath.row]! as [String:String]
+            
+            cell.icon?.image = UIImage(named: row["asset"]!)
+            cell.label?.text = row["text"]
+            
+            return cell
         }
-        
-        return cell
-    }
-    
-    
-    /**
-     Style the sections of the tableview
-     */
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.black
-        
-        return headerView
-    }
-    
-    
-    /**
-     Set the height for the section header
-     */
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
     }
     
     

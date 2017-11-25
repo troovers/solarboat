@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Start the plist manager for easy editing
-        SwiftyPlistManager.shared.start(plistNames: ["UserData"], logging: true)
+        SwiftyPlistManager.shared.start(plistNames: ["UserData"], logging: false)
         
         // Override point for customization after application launch.
         return true

@@ -28,6 +28,7 @@
 		C87305AB1FC8764600B68049 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87305AA1FC8764600B68049 /* UserData.plist */; };
 		C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8825F801FC5C1F100B9E30E /* Settings.bundle */; };
 		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
+		C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
 		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
@@ -79,6 +80,7 @@
 		C87305AA1FC8764600B68049 /* UserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		C8825F801FC5C1F100B9E30E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Solarboat/Settings.bundle; sourceTree = "<group>"; };
 		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatInformationHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
@@ -205,6 +207,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C8B391F51FC99B04003145CA /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */,
+				C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		C8DE0D791FB4700600E881CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,9 +228,9 @@
 		C8DE0D7A1FB4701700E881CC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C8B391F51FC99B04003145CA /* TableViewCells */,
 				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
 				C8E048EE1FB60003001F971B /* MapViewController.swift */,
-				C82071E01FB723CD00258EC3 /* BoatInformationTableViewCell.swift */,
 				C82071E41FB732FF00258EC3 /* InformationViewController.swift */,
 				C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */,
 				C82071ED1FB7454000258EC3 /* PageViews */,
@@ -449,6 +460,7 @@
 				C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */,
 				C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
+				C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */,
 				C87305991FC5D05100B68049 /* Reachability.swift in Sources */,
 				C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */,
 				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
