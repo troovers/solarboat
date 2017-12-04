@@ -3,16 +3,19 @@ PODS:
     - Starscream (~> 3.0.2)
   - Starscream (3.0.2)
   - SwiftyPlistManager (1.0.2)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Socket.IO-Client-Swift (~> 13.0.0)
   - SwiftyPlistManager
+  - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
   Starscream: b512c62f6706421221b5ceb2ba01a9f58aca5bea
   SwiftyPlistManager: 5895924cccb7fe28deccbe14890e8aed78ae78ae
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 9f56ef537bed0c022ff979d7801f80d07f5d0ed2
+PODFILE CHECKSUM: 49a0b90981c7f34254a9977aae03733adf92fce7
 
 COCOAPODS: 1.3.1

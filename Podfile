@@ -6,4 +6,5 @@ target 'Solarboat' do
   use_frameworks!
   pod 'Socket.IO-Client-Swift', '~> 13.0.0'
   pod 'SwiftyPlistManager'
+  pod 'youtube-ios-player-helper'
 end

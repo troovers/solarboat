@@ -358,17 +358,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-vh-zNT" userLabel="LiveFeed">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhE-iO-O3C" customClass="YTPlayerView">
+                                <rect key="frame" x="215" y="528" width="160" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="JMx-sR-We5"/>
+                                    <constraint firstAttribute="width" secondItem="HhE-iO-O3C" secondAttribute="height" multiplier="16:9" id="VTm-VW-lzZ"/>
+                                    <constraint firstAttribute="height" constant="90" id="ndx-Ru-0eF"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGe-z2-eP9">
                                 <rect key="frame" x="215" y="528" width="160" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Eam-vh-zNT" secondAttribute="height" multiplier="16:9" id="5hj-PL-CCN"/>
-                                    <constraint firstAttribute="height" constant="90" id="Cfx-4s-Wmp"/>
-                                    <constraint firstAttribute="width" constant="160" id="Lo4-Xu-z9a"/>
+                                    <constraint firstAttribute="width" secondItem="zGe-z2-eP9" secondAttribute="height" multiplier="16:9" id="ZnS-vM-6XU"/>
+                                    <constraint firstAttribute="height" constant="90" id="h6f-fk-wfL"/>
+                                    <constraint firstAttribute="width" constant="160" id="nSa-qd-GYS"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="splashScreenBackground"/>
                                 <connections>
-                                    <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="eNm-bS-LUz"/>
+                                    <action selector="liveFeed:" destination="ePl-HG-9Jm" eventType="touchUpInside" id="vQv-2P-Oh9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -377,12 +384,14 @@
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="1B5-j9-dPZ"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="BQQ-7G-J5U"/>
                             <constraint firstItem="Udu-6p-xen" firstAttribute="top" secondItem="T9x-2r-vjm" secondAttribute="top" id="DHg-pH-to5"/>
+                            <constraint firstItem="zGe-z2-eP9" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="En8-h6-pXq"/>
                             <constraint firstItem="T9x-2r-vjm" firstAttribute="bottom" secondItem="Udu-6p-xen" secondAttribute="bottom" id="N6N-RH-BqM"/>
-                            <constraint firstItem="Eam-vh-zNT" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="QZa-nc-pd1"/>
-                            <constraint firstItem="Eam-vh-zNT" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="U9x-Qo-LKR"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="fAw-cR-L2g"/>
                             <constraint firstItem="eYk-8z-cAq" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="frd-9T-12s"/>
                             <constraint firstItem="Udu-6p-xen" firstAttribute="leading" secondItem="T9x-2r-vjm" secondAttribute="leading" id="gYR-Y9-R0O"/>
+                            <constraint firstItem="HhE-iO-O3C" firstAttribute="trailing" secondItem="T9x-2r-vjm" secondAttribute="trailing" id="lR7-uI-aXg"/>
+                            <constraint firstItem="zGe-z2-eP9" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="nWe-aM-DB8"/>
+                            <constraint firstItem="HhE-iO-O3C" firstAttribute="bottom" secondItem="T9x-2r-vjm" secondAttribute="bottom" id="sKn-JE-S4h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T9x-2r-vjm"/>
                     </view>
@@ -403,7 +412,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="liveFeed" destination="Eam-vh-zNT" id="cMF-ht-bW5"/>
+                        <outlet property="liveFeed" destination="HhE-iO-O3C" id="DGB-Q3-Mo5"/>
+                        <outlet property="liveFeedButton" destination="zGe-z2-eP9" id="SFn-XI-Hme"/>
                         <outlet property="mapView" destination="eYk-8z-cAq" id="f8P-fy-5fe"/>
                         <outlet property="mapViewTabBarConstraint" destination="1B5-j9-dPZ" id="XJI-kO-jjF"/>
                         <outlet property="menuButton" destination="iiQ-cl-NaH" id="Pkb-H8-DBV"/>
@@ -678,7 +688,6 @@
         <image name="sendImage" width="50" height="50"/>
         <image name="settingsIcon" width="25" height="25"/>
         <image name="settingsPageHeader" width="1024" height="575"/>
-        <image name="splashScreenBackground" width="640" height="427"/>
     </resources>
     <color key="tintColor" red="0.77647058820000003" green="0.0" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import SocketIO
+import youtube_ios_player_helper
 
-class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource {
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, YTPlayerViewDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -29,7 +30,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         }, completion: nil)
     }
     
-    @IBOutlet weak var liveFeed: UIButton!
+    @IBOutlet weak var liveFeed: YTPlayerView!
+    
+    @IBOutlet weak var liveFeedButton: UIButton!
     
     var liveFeedIsExpanded: Bool = false
     
@@ -53,13 +56,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     /// The complete set of data for inside the tableview
     var tableData = [Int: [String: String]]()
     
-    private let socketManager: SocketManager = SocketManager(socketURL: URL(string: "http://icytea.nl")!, config: [.log(true), .compress])
+    private let socketManager: SocketManager = SocketManager(socketURL: URL(string: "http://51.254.217.43:9100")!, config: [.log(true), .compress])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         tableView.dataSource = self
+        liveFeed.delegate = self
         
         // Register the settings bundle
         registerSettingsBundle()
@@ -72,6 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         
         // Bring the table view to the front
         tableView.superview?.bringSubview(toFront: tableView)
+
 
         // Generate the structure of the tableview with stub data
         data[0] = [
@@ -119,6 +124,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         
         // Add the socket handlers
         addSocketHandlers()
+        
+        
+        // Load the live stream video
+        loadLiveStream(channelId: "ZMQFsNqGavU")
+    }
+    
+    
+    /**
+     Load the live stream of the boat
+     */
+    private func loadLiveStream(channelId: String) {
+        
+        liveFeed.load(withVideoId: channelId, playerVars: ["autoplay": 1, "live": 1, "modestbranding": 0, "showinfo": 0, "rel": 0, "playsinline" : 1, "controls" : 0])
+    }
+    
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        self.liveFeed.playVideo()
     }
     
     
@@ -130,12 +153,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
 
         socket.on(clientEvent: .connect) {data, ack in
             // Socket is connected
-            
             socket.emit("registerDevice", ["text"])
             
             socket.emit("boatUpdate", "")
-            
-            socket.emit("streamImage", "")
         }
         
         socket.on("boatUpdate") {data, ack in
@@ -157,22 +177,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                 let boatUpdate = BoatUpdate(rpm: rpm, speed: speed, latitude: latitude, longitude: longitude)
                 
                 self.reloadRows(boatUpdate: boatUpdate)
-            }
-        }
-        
-        socket.on("streamImage") {data, ack in
-            let object = data[0] as! [String:Any]
-            
-            let image = object["image"] as? String
-            
-            //let encoded = image!.replacingOccurrences(of: "data:image/jpg;base64,/9j/", with: "")
-            let encoded = image!
-
-            if let decodedData = Data(base64Encoded: encoded, options: .ignoreUnknownCharacters) {
-                let image = UIImage(data: decodedData)
-                
-                //self.liveFeed.setBackgroundImage(image, for: UIControlState.normal)
-
             }
         }
         
@@ -216,6 +220,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                 liveFeedIsExpanded = false
             }
         }
+        
+        print(self.liveFeed.isHidden)
     }
     
     
@@ -232,9 +238,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             // The new y position of the live feed
             let y = self.view.frame.height - height - tabBarHeight!
             
-            // Enlarge the live feed
+            // Enlarge the live feed & button
             self.liveFeed.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
             self.liveFeed.layoutSubviews()
+            
+            self.liveFeedButton.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
+            self.liveFeedButton.layoutSubviews()
             
             // Decrease the size of the mapview
             self.mapView.frame = CGRect(x: 0, y: mapViewFrame.origin.y, width: self.view.frame.width, height: self.view.frame.height - height)
@@ -262,10 +271,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             let x = self.view.frame.width - 160
             let y = self.view.frame.height - 90 - tabBarHeight!
             
-            // The new size of the live feed
+            // The new size of the live feed & button
             self.liveFeed.transform = CGAffineTransform.identity
             self.liveFeed.frame = CGRect(x: x, y: y, width: 160, height: 90)
             self.liveFeed.layoutSubviews()
+            
+            self.liveFeedButton.transform = CGAffineTransform.identity
+            self.liveFeedButton.frame = CGRect(x: x, y: y, width: 160, height: 90)
+            self.liveFeedButton.layoutSubviews()
         }, completion: { (finished: Bool) in
             
         })
