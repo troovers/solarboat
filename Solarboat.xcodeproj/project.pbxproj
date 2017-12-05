@@ -33,6 +33,8 @@
 		C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
+		C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */; };
+		C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */; };
 		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
+		C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatLocationAnnotation.swift; sourceTree = "<group>"; };
+		C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousBoatLocationAnnotation.swift; sourceTree = "<group>"; };
 		ECA00CB58D7B81F73B5C30B8 /* Pods_Solarboat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solarboat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -210,6 +214,8 @@
 			children = (
 				C87305A81FC6CE3000B68049 /* BoatUpdate.swift */,
 				C85808441FC9B8780098C3B2 /* Message.swift */,
+				C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */,
+				C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */,
 				C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */,
 				C85808471FC9B9340098C3B2 /* MessageTableViewCell.swift in Sources */,
+				C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
 				C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */,
 				C87305991FC5D05100B68049 /* Reachability.swift in Sources */,
@@ -482,6 +489,7 @@
 				C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */,
 				C85808451FC9B8780098C3B2 /* Message.swift in Sources */,
 				C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */,
+				C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */,
 				C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,10 @@ import SocketIO
 import youtube_ios_player_helper
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, YTPlayerViewDelegate {
+    
+    var currentLocationAnnotation: BoatLocationAnnotation?
+    
+    var previousLocations: [PreviousBoatLocationAnnotation]?
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -123,11 +127,95 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         tableData = data
         
         // Add the socket handlers
-        addSocketHandlers()
+        //addSocketHandlers()
         
         
         // Load the live stream video
         loadLiveStream(channelId: "ZMQFsNqGavU")
+
+        retrieveBoatLocations()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            self.addNewBoatLocation()
+        })
+    }
+    
+    
+    /**
+     Generating the views for the annotations of the boat location
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var view : MKAnnotationView
+        
+        if let annotation = annotation as? BoatLocationAnnotation {
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
+                view = dequeuedView
+            } else {
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+            }
+            
+            view.image = #imageLiteral(resourceName: "boatLocationAnnotation")
+            view.centerOffset = CGPoint(x: 0, y: (view.image?.size.height)! / -2);
+            
+            return view
+        } else {
+            if let annotation = annotation as? PreviousBoatLocationAnnotation {
+                if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
+                    view = dequeuedView
+                } else {
+                    view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+                }
+                
+                view.image = #imageLiteral(resourceName: "previousBoatLocationAnnotation")
+                view.centerOffset = CGPoint(x: 0, y: (view.image?.size.height)! / -2);
+                
+                return view
+            }
+        }
+
+        return nil
+    }
+    
+    
+    /**
+     Retrieve the boat locations from the api and display them on the map
+     */
+    private func retrieveBoatLocations() {
+        previousLocations = [
+            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.789231, longitude: 4.875523)),
+            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.792208, longitude: 4.875131)),
+            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.794152, longitude: 4.875410)),
+            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.797118, longitude: 4.876633))
+        ]
+        
+        currentLocationAnnotation = BoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.799381, longitude: 4.876612))
+        
+        mapView.addAnnotations(previousLocations!)
+        mapView.addAnnotation(currentLocationAnnotation!)
+        
+        // Move the map to zoom in on the last added location
+        let visibleRegion = MKCoordinateRegionMakeWithDistance((currentLocationAnnotation?.boatUpdate.location)!, 5000, 5000)
+        mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
+    }
+    
+    
+    /**
+     Add a new location to the map
+     */
+    private func addNewBoatLocation() {
+        // Delete the current boat location from the map
+        mapView.removeAnnotation(currentLocationAnnotation!)
+        
+        // Add the previous current location to the map as a history location
+        mapView.addAnnotation(PreviousBoatLocationAnnotation(boatUpdate: currentLocationAnnotation!.boatUpdate))
+
+        // Add the new location to the map as current location
+        let boatUpdate = BoatUpdate(rpm: 1000, speed: 5, latitude: 51.801935, longitude: 4.876561)
+        
+        mapView.addAnnotation(BoatLocationAnnotation(boatUpdate: boatUpdate))
+        
+        // Move the map to zoom in on the last added location
+        mapView.setCenter(boatUpdate.location, animated: true)
     }
     
     
@@ -140,6 +228,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     }
     
     
+    /**
+     The function which get's called when the youtube player view is ready
+     */
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.liveFeed.playVideo()
     }

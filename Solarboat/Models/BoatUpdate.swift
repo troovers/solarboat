@@ -11,11 +11,11 @@ import MapKit
 class BoatUpdate {
     var rpm: Double
     var speed: Double
-    var location: CLLocation
+    var location: CLLocationCoordinate2D
     
     init(rpm: Double, speed: Double, latitude: Double, longitude: Double) {
         self.rpm = rpm
         self.speed = speed
-        self.location = CLLocation(latitude: latitude, longitude: longitude)
+        self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
