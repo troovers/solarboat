@@ -27,13 +27,9 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             senderNameErrorLabel.text = ""
             senderName.layer.borderColor = defaultInputBorderColor.cgColor
             
-            SwiftyPlistManager.shared.save(senderName.text!, forKey: "userName", toPlistWithName: "UserData") { (err) in
-                if err == nil {
-                    self.showToast(message: "Uw naam is opgeslagen!", errorCode: 200, warning: false, hideAfter: 5.0, toastLocation: UIViewController.toastTop)
-                } else {
-                    self.showToast(message: "Er is iets mis gegaan, probeer het nogmaals", errorCode: 500, warning: true, hideAfter: 5.0, toastLocation: UIViewController.toastTop)
-                }
-            }
+            UserDefaults.standard.set(senderName.text!, forKey: "userName")
+            
+            self.showToast(message: "Uw naam is opgeslagen!", errorCode: 200, warning: false, hideAfter: 5.0, toastLocation: UIViewController.toastTop)
         }
     }
     
@@ -67,11 +63,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
         sendMessageButton.layer.cornerRadius = 5
         
-        SwiftyPlistManager.shared.getValue(for: "userName", fromPlistWithName: "UserData") { (result, err) in
-            if err == nil {
-                senderName.text = result as? String
-            }
-        }
+        senderName.text = UserDefaults.standard.string(forKey: "userName")
         
         message.layer.borderWidth = 1.0
         message.layer.borderColor = defaultInputBorderColor.cgColor

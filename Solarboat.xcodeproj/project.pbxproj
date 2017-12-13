@@ -21,21 +21,25 @@
 		C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */; };
 		C82982261FB46D1D009DDCB0 /* SolarboatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982251FB46D1D009DDCB0 /* SolarboatTests.swift */; };
 		C82982311FB46D1D009DDCB0 /* SolarboatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */; };
+		C834C02F1FDACD8200FA3161 /* BoatLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C834C02E1FDACD8200FA3161 /* BoatLocation.swift */; };
+		C834C0311FDAE34D00FA3161 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C834C0301FDAE34D00FA3161 /* EventHelper.swift */; };
+		C834C0331FDAE46100FA3161 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C834C0321FDAE46100FA3161 /* EventManager.swift */; };
 		C85808451FC9B8780098C3B2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85808441FC9B8780098C3B2 /* Message.swift */; };
 		C85808471FC9B9340098C3B2 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85808461FC9B9340098C3B2 /* MessageTableViewCell.swift */; };
 		C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */; };
 		C87305991FC5D05100B68049 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305981FC5D05100B68049 /* Reachability.swift */; };
 		C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A21FC5F54E00B68049 /* MessageViewController.swift */; };
 		C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87305A81FC6CE3000B68049 /* BoatUpdate.swift */; };
-		C87305AB1FC8764600B68049 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87305AA1FC8764600B68049 /* UserData.plist */; };
 		C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8825F801FC5C1F100B9E30E /* Settings.bundle */; };
 		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
+		C8996DE01FE149A0004F354B /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8996DDF1FE149A0004F354B /* SocketHelper.swift */; };
 		C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
 		C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */; };
 		C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */; };
 		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
+		C8ED12341FE17047006BA457 /* AppStartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED12331FE17047006BA457 /* AppStartHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,9 @@
 		C829822C1FB46D1D009DDCB0 /* SolarboatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolarboatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82982301FB46D1D009DDCB0 /* SolarboatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarboatUITests.swift; sourceTree = "<group>"; };
 		C82982321FB46D1D009DDCB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C834C02E1FDACD8200FA3161 /* BoatLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatLocation.swift; sourceTree = "<group>"; };
+		C834C0301FDAE34D00FA3161 /* EventHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHelper.swift; sourceTree = "<group>"; };
+		C834C0321FDAE46100FA3161 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		C85808441FC9B8780098C3B2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C85808461FC9B9340098C3B2 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		C85808481FC9C1270098C3B2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -85,15 +92,16 @@
 		C87305981FC5D05100B68049 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C87305A21FC5F54E00B68049 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		C87305A81FC6CE3000B68049 /* BoatUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatUpdate.swift; sourceTree = "<group>"; };
-		C87305AA1FC8764600B68049 /* UserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		C8825F801FC5C1F100B9E30E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Solarboat/Settings.bundle; sourceTree = "<group>"; };
 		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		C8996DDF1FE149A0004F354B /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatInformationHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
 		C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatLocationAnnotation.swift; sourceTree = "<group>"; };
 		C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousBoatLocationAnnotation.swift; sourceTree = "<group>"; };
+		C8ED12331FE17047006BA457 /* AppStartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartHelper.swift; sourceTree = "<group>"; };
 		ECA00CB58D7B81F73B5C30B8 /* Pods_Solarboat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solarboat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,7 +186,6 @@
 				C829821C1FB46D1D009DDCB0 /* Info.plist */,
 				C87305971FC5CBD300B68049 /* Extensions */,
 				C87305981FC5D05100B68049 /* Reachability.swift */,
-				C87305AA1FC8764600B68049 /* UserData.plist */,
 			);
 			path = Solarboat;
 			sourceTree = "<group>";
@@ -216,6 +223,11 @@
 				C85808441FC9B8780098C3B2 /* Message.swift */,
 				C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */,
 				C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */,
+				C834C02E1FDACD8200FA3161 /* BoatLocation.swift */,
+				C834C0301FDAE34D00FA3161 /* EventHelper.swift */,
+				C834C0321FDAE46100FA3161 /* EventManager.swift */,
+				C8996DDF1FE149A0004F354B /* SocketHelper.swift */,
+				C8ED12331FE17047006BA457 /* AppStartHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,7 +399,6 @@
 				C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */,
 				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
 				C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */,
-				C87305AB1FC8764600B68049 /* UserData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +426,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Solarboat/Pods-Solarboat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyPlistManager/SwiftyPlistManager.framework",
@@ -422,6 +435,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPlistManager.framework",
@@ -473,8 +488,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82071E71FB73E5D00258EC3 /* InformationPageViewController.swift in Sources */,
+				C8996DE01FE149A0004F354B /* SocketHelper.swift in Sources */,
 				C87305A31FC5F54E00B68049 /* MessageViewController.swift in Sources */,
+				C834C0331FDAE46100FA3161 /* EventManager.swift in Sources */,
 				C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */,
+				C8ED12341FE17047006BA457 /* AppStartHelper.swift in Sources */,
 				C85808471FC9B9340098C3B2 /* MessageTableViewCell.swift in Sources */,
 				C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
@@ -488,8 +506,10 @@
 				C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */,
 				C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */,
 				C85808451FC9B8780098C3B2 /* Message.swift in Sources */,
+				C834C02F1FDACD8200FA3161 /* BoatLocation.swift in Sources */,
 				C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */,
 				C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */,
+				C834C0311FDAE34D00FA3161 /* EventHelper.swift in Sources */,
 				C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

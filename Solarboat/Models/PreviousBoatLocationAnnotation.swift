@@ -9,12 +9,12 @@
 import MapKit
 
 class PreviousBoatLocationAnnotation: NSObject, MKAnnotation {
-    var boatUpdate : BoatUpdate
-    var coordinate : CLLocationCoordinate2D { return boatUpdate.location }
+    var boatLocation : BoatLocation
+    var coordinate : CLLocationCoordinate2D { return boatLocation.location }
     let identifier : String = "previousBoatLocationAnnotation"
     
-    init(boatUpdate: BoatUpdate) {
-        self.boatUpdate = boatUpdate
+    init(boatLocation: BoatLocation) {
+        self.boatLocation = boatLocation
     }
     
     var title: String? {

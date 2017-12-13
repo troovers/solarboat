@@ -7,4 +7,6 @@ target 'Solarboat' do
   pod 'Socket.IO-Client-Swift', '~> 13.0.0'
   pod 'SwiftyPlistManager'
   pod 'youtube-ios-player-helper'
+  pod 'Pulsator'
+  pod 'Alamofire', '~> 4.5'
 end

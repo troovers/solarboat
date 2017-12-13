@@ -1,4 +1,6 @@
 PODS:
+  - Alamofire (4.5.1)
+  - Pulsator (0.4.0)
   - Socket.IO-Client-Swift (13.0.1):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.2)
@@ -6,16 +8,20 @@ PODS:
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - Pulsator
   - Socket.IO-Client-Swift (~> 13.0.0)
   - SwiftyPlistManager
   - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Pulsator: a0e7c006790a576de63280b2f0552ea1c1b83ce0
   Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
   Starscream: b512c62f6706421221b5ceb2ba01a9f58aca5bea
   SwiftyPlistManager: 5895924cccb7fe28deccbe14890e8aed78ae78ae
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 49a0b90981c7f34254a9977aae03733adf92fce7
+PODFILE CHECKSUM: d63b2ba97bd9074eb4a3266b3f4b65f3e576e928
 
 COCOAPODS: 1.3.1

@@ -8,8 +8,10 @@
 
 import UIKit
 import MapKit
-import SocketIO
 import youtube_ios_player_helper
+import Pulsator
+import Alamofire
+import SwiftyPlistManager
 
 class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, YTPlayerViewDelegate {
     
@@ -60,10 +62,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     /// The complete set of data for inside the tableview
     var tableData = [Int: [String: String]]()
     
-    private let socketManager: SocketManager = SocketManager(socketURL: URL(string: "http://51.254.217.43:9100")!, config: [.log(true), .compress])
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Launch the startup helper
+        let appStartHelper = AppStartHelper()
         
         mapView.delegate = self
         tableView.dataSource = self
@@ -80,6 +83,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         
         // Bring the table view to the front
         tableView.superview?.bringSubview(toFront: tableView)
+        
+        // Set the image for the live feed button
+        liveFeedButton.imageView?.contentMode = .scaleAspectFit
+        liveFeedButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
 
 
         // Generate the structure of the tableview with stub data
@@ -91,13 +98,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         data[1] = [
             "type": "info",
             "asset": "speed",
-            "text": "5 km/h"
+            "text": "0 km/h"
         ]
         
         data[2] = [
             "type": "info",
             "asset": "speed",
-            "text": "text"
+            "text": ""
         ]
         
         data[3] = [
@@ -108,36 +115,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         data[4] = [
             "type": "info",
             "asset": "windSpeed",
-            "text": "1 km/h"
+            "text": "0 km/h"
         ]
         
         data[5] = [
             "type": "info",
             "asset": "windDirection",
-            "text": "NO"
+            "text": ""
         ]
         
         data[6] = [
             "type": "info",
             "asset": "temperature",
-            "text": "15 \u{00B0}"
+            "text": "0 \u{00B0}"
         ]
         
         // Add the weather section
         tableData = data
         
         // Add the socket handlers
-        //addSocketHandlers()
-        
-        
-        // Load the live stream video
-        loadLiveStream(channelId: "ZMQFsNqGavU")
+        addSocketHandlers()
 
-        retrieveBoatLocations()
+        let eventHelper: EventHelper = EventHelper.instance
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-            self.addNewBoatLocation()
-        })
+        eventHelper.events.listenTo(eventName: "retrieveCoordinates", action: self.retrieveBoatLocations)
+        
+        eventHelper.events.listenTo(eventName: "loadLiveStream", action: self.loadLiveStream)
     }
     
     
@@ -156,6 +159,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             
             view.image = #imageLiteral(resourceName: "boatLocationAnnotation")
             view.centerOffset = CGPoint(x: 0, y: (view.image?.size.height)! / -2);
+            
+            let pulsator = Pulsator()
+            pulsator.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
+            pulsator.animationDuration = 3.0
+            pulsator.position = CGPoint(x: 12.5, y: 12.5)
+            
+            view.layer.addSublayer(pulsator)
+            
+            pulsator.start()
             
             return view
         } else {
@@ -181,50 +193,102 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      Retrieve the boat locations from the api and display them on the map
      */
     private func retrieveBoatLocations() {
-        previousLocations = [
-            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.789231, longitude: 4.875523)),
-            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.792208, longitude: 4.875131)),
-            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.794152, longitude: 4.875410)),
-            PreviousBoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.797118, longitude: 4.876633))
-        ]
+        var boatID: Int = 0
+        var accessToken: String = ""
         
-        currentLocationAnnotation = BoatLocationAnnotation(boatUpdate: BoatUpdate(rpm: 1000, speed: 5, latitude: 51.799381, longitude: 4.876612))
+        boatID = UserDefaults.standard.integer(forKey: "activeBoatID")
+        accessToken = UserDefaults.standard.string(forKey: "accessToken")!
         
-        mapView.addAnnotations(previousLocations!)
-        mapView.addAnnotation(currentLocationAnnotation!)
-        
-        // Move the map to zoom in on the last added location
-        let visibleRegion = MKCoordinateRegionMakeWithDistance((currentLocationAnnotation?.boatUpdate.location)!, 5000, 5000)
-        mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
+        // Retrieve the coordinates when there is an active race
+        if(boatID > 0 && accessToken != "") {
+            let headers: HTTPHeaders = [
+                "X-Access-Token": accessToken,
+                "Accept": "application/json"
+            ]
+            
+            previousLocations = []
+            
+            Alamofire.request("http://localhost:9100/apiv2/coordinates/\(boatID)", headers: headers).responseJSON { response in
+                if let result = response.result.value as? NSArray {
+                    
+                    for (index, object) in result.enumerated() {
+                        if let coordinates = object as? [String:Any] {
+                            let boatLocation = BoatLocation(latitude: coordinates["latitude"] as! Double, longitude: coordinates["longitude"] as! Double)
+                            
+                            // Add the marker as current location
+                            if(index == 0) {
+                                self.currentLocationAnnotation = BoatLocationAnnotation(boatLocation: boatLocation)
+                            } else {
+                                self.previousLocations?.append(PreviousBoatLocationAnnotation(boatLocation: boatLocation))
+                            }
+                        }
+                    }
+                    
+                    if(self.previousLocations?.count != 0) {
+                        self.mapView.addAnnotations(self.previousLocations!)
+                    }
+                    
+                    if(self.currentLocationAnnotation != nil) {
+                        self.mapView.addAnnotation(self.currentLocationAnnotation!)
+                    }
+                    
+                    // Move the map to zoom in on the last added location
+                    let visibleRegion = MKCoordinateRegionMakeWithDistance((self.currentLocationAnnotation?.boatLocation.location)!, 5000, 5000)
+                    self.mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
+                }
+            }
+        }
     }
     
     
     /**
      Add a new location to the map
      */
-    private func addNewBoatLocation() {
+    private func addNewBoatLocation(boatLocation: BoatLocation) {
         // Delete the current boat location from the map
         mapView.removeAnnotation(currentLocationAnnotation!)
         
         // Add the previous current location to the map as a history location
-        mapView.addAnnotation(PreviousBoatLocationAnnotation(boatUpdate: currentLocationAnnotation!.boatUpdate))
+        mapView.addAnnotation(PreviousBoatLocationAnnotation(boatLocation: currentLocationAnnotation!.boatLocation))
 
         // Add the new location to the map as current location
-        let boatUpdate = BoatUpdate(rpm: 1000, speed: 5, latitude: 51.801935, longitude: 4.876561)
-        
-        mapView.addAnnotation(BoatLocationAnnotation(boatUpdate: boatUpdate))
+        mapView.addAnnotation(BoatLocationAnnotation(boatLocation: boatLocation))
         
         // Move the map to zoom in on the last added location
-        mapView.setCenter(boatUpdate.location, animated: true)
+        mapView.setCenter(boatLocation.location, animated: true)
     }
     
     
     /**
      Load the live stream of the boat
      */
-    private func loadLiveStream(channelId: String) {
+    private func loadLiveStream() {
+    
+        let channelId = UserDefaults.standard.string(forKey: "youtubeChannelId")
         
-        liveFeed.load(withVideoId: channelId, playerVars: ["autoplay": 1, "live": 1, "modestbranding": 0, "showinfo": 0, "rel": 0, "playsinline" : 1, "controls" : 0])
+        let url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(channelId!)&type=video&eventType=live&key=AIzaSyCr5iItkEnieYuJpXnn9OacTTQ3PFPqW4c"
+        
+        Alamofire.request(url).responseJSON { response in
+            var live: Bool = false
+            var videoId: String?
+            
+            if let result = response.result.value as? [String:Any] {
+                if let items = result["items"] as? NSArray {
+                    if let liveStream = items[0] as? [String:Any] {
+                        let id = liveStream["id"] as! [String:Any]
+                        
+                        live = true
+                        
+                        videoId = id["videoId"] as? String
+                    }
+                }
+            }
+            
+            if (live) {
+                // Remove the button overlay and play the video
+                self.liveFeed.load(withVideoId: videoId!, playerVars: ["autoplay": 1, "live": 1, "modestbranding": 0, "showinfo": 0, "rel": 0, "playsinline" : 1, "controls" : 0])
+            }
+        }
     }
     
     
@@ -233,45 +297,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      */
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.liveFeed.playVideo()
+        
+        self.liveFeedButton.setImage(nil, for: .normal)
+        self.liveFeedButton.layer.backgroundColor = nil
     }
     
     
     /**
      Add the handlers for the socket connection
      */
-    func addSocketHandlers() {
-        let socket = socketManager.defaultSocket
-
-        socket.on(clientEvent: .connect) {data, ack in
-            // Socket is connected
-            socket.emit("registerDevice", ["text"])
-            
-            socket.emit("boatUpdate", "")
-        }
+    private func addSocketHandlers() {
+        let client = SocketHelper.instance.client
         
-        socket.on("boatUpdate") {data, ack in
+        client?.on("boatUpdate") {data, ack in
             
             let object = data[0] as! [String:Any]
             
-            if let boatUpdate = object["info"] as? [String:Any] {
+            if let boatUpdate = object["boatUpdate"] as? [String:Any] {
                 let rpm = boatUpdate["rpm"] as! Double
                 let speed = boatUpdate["speed"] as! Double
                 
                 var latitude = 0.0
                 var longitude = 0.0
                 
-                if let location = boatUpdate["location"] as? [String:String] {
-                    latitude = Double(location["latitude"]!)!
-                    longitude = Double(location["longitude"]!)!
+                if let location = boatUpdate["location"] as? [String:Double] {
+                    latitude = location["latitude"]!
+                    longitude = location["longitude"]!
                 }
+                
+                let boatLocation = BoatLocation(latitude: latitude, longitude: longitude)
+                
+                self.addNewBoatLocation(boatLocation: boatLocation)
                 
                 let boatUpdate = BoatUpdate(rpm: rpm, speed: speed, latitude: latitude, longitude: longitude)
                 
                 self.reloadRows(boatUpdate: boatUpdate)
             }
         }
-        
-        socket.connect()
     }
     
     
@@ -373,15 +435,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         }, completion: { (finished: Bool) in
             
         })
-    }
-    
-    
-    /**
-     Handle a long press on the live feed as an easter egg
-     */
-    func longPressOnLiveFeed() {
-        // Navigate to the video of the teams
-        performSegue(withIdentifier: "showTeamVideoSegue", sender: nil)
     }
 
     

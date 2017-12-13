@@ -9,6 +9,7 @@
 import UIKit
 import SocketIO
 import SwiftyPlistManager
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,9 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("could not start reachability notifier")
         }
-        
-        // Start the plist manager for easy editing
-        SwiftyPlistManager.shared.start(plistNames: ["UserData"], logging: false)
         
         // Override point for customization after application launch.
         return true
@@ -70,6 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
+    /**
+     Get the visible view controller
+     */
     func getTopViewController() -> UIViewController {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
@@ -81,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return UIViewController()
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
