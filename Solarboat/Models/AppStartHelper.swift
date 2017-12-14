@@ -10,6 +10,8 @@ import Alamofire
 
 class AppStartHelper {
     
+    static let apiURL: String = "http://51.254.217.43:9100"
+    
     init() {
         self.login()
         
@@ -23,7 +25,7 @@ class AppStartHelper {
     private func login() {
         let parameters = ["username": "solarboat", "password": "solarboat12345"]
         
-        Alamofire.request("http://localhost:9100/apiv2/login", method: .post, parameters: parameters).responseJSON { response in
+        Alamofire.request("\(AppStartHelper.apiURL)/apiv2/login", method: .post, parameters: parameters).responseJSON { response in
             if let result = response.result.value as? [String:Any] {
                 UserDefaults.standard.set(result["token"] as! String, forKey: "accessToken")
                 
@@ -42,7 +44,7 @@ class AppStartHelper {
             "Accept": "application/json"
         ]
         
-        Alamofire.request("http://localhost:9100/apiv2/boats/active", headers: headers).responseJSON { response in
+        Alamofire.request("\(AppStartHelper.apiURL)/apiv2/boats/active", headers: headers).responseJSON { response in
             if let result = response.result.value as? NSArray {
                 if let boat = result[0] as? [String:Any] {
                     UserDefaults.standard.set(boat["id"] as! Int, forKey: "activeBoatID")
