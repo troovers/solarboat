@@ -66,7 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         
         // Launch the startup helper
-        _ = AppStartHelper()
+        let appStartHelper = AppStartHelper()
         
         mapView.delegate = self
         tableView.dataSource = self
@@ -219,8 +219,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             
             previousLocations = []
             
-            Alamofire.request("http://51.254.217.43:9100/apiv2/coordinates/\(boatID)", headers: headers).responseJSON { response in
+            Alamofire.request("\(AppStartHelper.apiURL)/apiv2/coordinates/\(boatID)", headers: headers).responseJSON { response in
                 if let result = response.result.value as? NSArray {
+                    var speed = 0.0
                     
                     for (index, object) in result.enumerated() {
                         if let coordinates = object as? [String:Any] {
@@ -228,6 +229,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                             
                             // Add the marker as current location
                             if(index == 0) {
+                                speed = coordinates["speed"] as! Double
+                                
                                 self.currentLocationAnnotation = BoatLocationAnnotation(boatLocation: boatLocation)
                             } else {
                                 self.previousLocations?.append(PreviousBoatLocationAnnotation(boatLocation: boatLocation))
@@ -240,6 +243,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                     }
                     
                     if(self.currentLocationAnnotation != nil) {
+                        self.reloadRows(boatUpdate: BoatUpdate(rpm: 0.0, speed: speed))
+                        
                         self.mapView.addAnnotation(self.currentLocationAnnotation!)
                         
                         // Move the map to zoom in on the last added location
@@ -310,39 +315,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      */
     private func updateWeather() {
         Alamofire.request("https://api.buienradar.nl/data/public/1.1/jsonfeed").responseJSON { response in
-            if let result = response.result.value as? [String:Any] {
-                if let buienradar = result["buienradarnl"] as? [String:Any] {
-                    if let weergegevens = buienradar["weergegevens"] as? [String:Any] {
-                        if let actueel = weergegevens["actueel_weer"] as? [String:Any] {
-                            if let weerstations = actueel["weerstations"] as? [String:Any] {
-                                if let weerstation = weerstations["weerstation"] as? NSArray {
-                                    for (_, object) in weerstation.enumerated() {
-                                        if let station = object as? [String:Any] {
-                                            // Check if the station is Leeuwarden (the closest to Akkrum)
-                                            if(station["stationcode"] as! String == "6270") {
-                                                
-                                                if let windSpeed = (Double(station["windsnelheidMS"] as! String)! / 3.6) as? Double {
-                                                    self.tableData[4]?.updateValue("\(String(format: "%.1f", windSpeed)) km/h", forKey: "text")
-                                                }
-                                                
-                                                self.tableData[5]?.updateValue("\(station["windrichting"]!)", forKey: "text")
-                                                self.tableData[6]?.updateValue("\(station["temperatuur10cm"]!) \u{00B0}", forKey: "text")
-                                                
-                                                var rain = 0.0
-                                                
-                                                if let rainMM = Double(station["regenMMPU"] as! String) {
-                                                    rain = rainMM
-                                                }
-                                                
-                                                self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) mm/h", forKey: "text")
-                                                
-                                                self.tableView.reloadRows(at: [IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0), IndexPath(item: 7, section: 0)], with: .none)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+            guard let result = response.result.value as? [String:Any] else { return }
+            guard let buienradar = result["buienradarnl"] as? [String:Any] else { return }
+            guard let weergegevens = buienradar["weergegevens"] as? [String:Any] else { return }
+            guard let actueel = weergegevens["actueel_weer"] as? [String:Any] else { return }
+            guard let weerstations = actueel["weerstations"] as? [String:Any] else { return }
+            guard let weerstation = weerstations["weerstation"] as? NSArray else { return }
+            
+            for (_, object) in weerstation.enumerated() {
+                if let station = object as? [String:Any] {
+                    // Check if the station is Leeuwarden (the closest to Akkrum)
+                    if(station["stationcode"] as! String == "6270") {
+                        
+                        if let windSpeed = (Double(station["windsnelheidMS"] as! String)! / 3.6) as? Double {
+                            self.tableData[4]?.updateValue("\(String(format: "%.1f", windSpeed)) km/h", forKey: "text")
                         }
+                        
+                        self.tableData[5]?.updateValue("\(station["windrichting"]!)", forKey: "text")
+                        self.tableData[6]?.updateValue("\(station["temperatuur10cm"]!) \u{00B0}", forKey: "text")
+                        
+                        var rain = 0.0
+                        
+                        if let rainMM = Double(station["regenMMPU"] as! String) {
+                            rain = rainMM
+                        }
+                        
+                        self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) mm/h", forKey: "text")
+                        
+                        self.tableView.reloadRows(at: [IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0), IndexPath(item: 7, section: 0)], with: .none)
+                        
+                        return
                     }
                 }
             }
@@ -387,7 +389,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                 
                 self.addNewBoatLocation(boatLocation: boatLocation)
                 
-                let boatUpdate = BoatUpdate(rpm: rpm, speed: speed, latitude: latitude, longitude: longitude)
+                let boatUpdate = BoatUpdate(rpm: rpm, speed: speed)
                 
                 self.reloadRows(boatUpdate: boatUpdate)
             }
@@ -431,8 +433,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                 liveFeedIsExpanded = false
             }
         }
-        
-        print(self.liveFeed.isHidden)
     }
     
     

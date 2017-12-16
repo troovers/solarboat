@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyPlistManager
+import Alamofire
 
 class MessageViewController: UIViewController, UITableViewDataSource {
 
@@ -39,14 +40,17 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBAction func sendMessage(_ sender: Any) {
-        guard let string = message.text else { return }
+        guard let content = message.text else { return }
         
-        if (string.isEmpty) {
+        if (content.isEmpty) {
             messageErrorLabel.text = "U dient een bericht op te geven"
             message.layer.borderColor = errorBordercolor.cgColor
         } else {
             messageErrorLabel.text = ""
             message.layer.borderColor = defaultInputBorderColor.cgColor
+            message.text = ""
+            
+            postNewMessage(content: content)
         }
     }
     
@@ -60,7 +64,8 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         tableView.dataSource = self
-        
+        tableView.superview?.bringSubview(toFront: tableView)
+
         sendMessageButton.layer.cornerRadius = 5
         
         senderName.text = UserDefaults.standard.string(forKey: "userName")
@@ -76,12 +81,99 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
         
-        messages.append(Message(date: "25-11 10:33", from: "Thomas Roovers", message: "Ik heb dit bericht verstuurd"))
-        messages.append(Message(date: "25-11 10:36", from: "Thomas Roovers", message: "Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd"))
-        messages.append(Message(date: "25-11 10:39", from: "Thomas Roovers", message: "Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd"))
-        messages.append(Message(date: "25-11 10:43", from: "Thomas Roovers", message: "Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd, Ik heb dit bericht verstuurd"))
+        retrieveSentMessages()
+    }
+    
+    
+    /**
+     Retrieve messages that were already sent to the boat
+     */
+    private func retrieveSentMessages() {
+        let accessToken = UserDefaults.standard.string(forKey: "accessToken")!
         
-        tableView.reloadData()
+        // Retrieve the coordinates when there is an active race
+        if(accessToken != "") {
+            let headers: HTTPHeaders = [
+                "X-Access-Token": accessToken,
+                "Accept": "application/json"
+            ]
+            
+            messages = []
+            
+            Alamofire.request("\(AppStartHelper.apiURL)/apiv2/messages", headers: headers).responseJSON { response in                
+                if let result = response.result.value as? NSArray {
+                    let dateFormatterOld = DateFormatter()
+                    dateFormatterOld.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    
+                    let dateFormatterNew = DateFormatter()
+                    dateFormatterNew.dateFormat = "dd-MM HH:mm"
+                    
+                    for (index, object) in result.enumerated() {
+                        if let message = object as? [String:Any] {
+                            let sender = message["sender_name"] as! String
+                            let content = message["message"] as! String
+                            let timestamp = message["timestamp"] as! String
+                            
+                            let date = dateFormatterOld.date(from: timestamp)
+                            
+                            self.messages.append(Message(date: dateFormatterNew.string(from: date!), from: sender, message: content))
+                        }
+                    }
+                    
+                    self.tableView.reloadData()
+                    self.scrollToBottom()
+                }
+            }
+        }
+    }
+    
+    
+    /**
+     Post a new message
+     */
+    private func postNewMessage(content: String) {
+        let accessToken = UserDefaults.standard.string(forKey: "accessToken")!
+        
+        // Retrieve the coordinates when there is an active race
+        if(accessToken != "") {
+            let headers: HTTPHeaders = [
+                "X-Access-Token": accessToken,
+                "Accept": "application/json"
+            ]
+            
+            let parameters = [
+                "device_uuid": UIDevice.current.identifierForVendor?.uuidString as Any,
+                "sender_name": UserDefaults.standard.string(forKey: "userName")!,
+                "message": content
+            ]
+        
+            Alamofire.request("\(AppStartHelper.apiURL)/apiv2/messages", method: .post, parameters: parameters, headers: headers).responseJSON { response in
+                if let result = response.result.value as? [String:Any] {
+                    if(result["error"] as? Bool == false) {
+                        let date = Date()
+                        let calendar = Calendar.current
+                        let day = calendar.component(.day, from: date)
+                        let month = calendar.component(.month, from: date)
+                        let hour = calendar.component(.hour, from: date)
+                        let minutes = calendar.component(.minute, from: date)
+                        
+                        self.messages.append(Message(date: "\(day)-\(month) \(hour):\(minutes)", from: UserDefaults.standard.string(forKey: "userName")!, message: content))
+                        
+                        self.tableView.reloadData()
+                        self.scrollToBottom()
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    /**
+     Scroll to the bottom of the tableview
+     */
+    private func scrollToBottom(){
+        let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
     
     
@@ -107,8 +199,15 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             
         let message = messages[indexPath.row] as Message
         
+        cell.senderName.text = message.from.uppercased()
         cell.date.text = message.date
         cell.message.text = message.message
+        
+        if(indexPath.row % 2 == 0) {
+            cell.contentView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
+        } else {
+            cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1.0)
+        }
         
         return cell
     }

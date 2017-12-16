@@ -10,6 +10,7 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var senderName: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var message: UILabel!
     

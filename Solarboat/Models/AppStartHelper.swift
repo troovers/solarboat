@@ -55,6 +55,7 @@ class AppStartHelper {
                     
                     eventHelper.coordinatesCanBeRetrieved()
                     eventHelper.liveStreamCanBeLoaded()
+
                 }
             }
         }

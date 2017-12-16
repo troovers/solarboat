@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try reachability.startNotifier()
         } catch {
-            print("could not start reachability notifier")
+            // Could not start reachability notifier
         }
         
         // Override point for customization after application launch.
