@@ -15,7 +15,6 @@
 		C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071EA1FB7452E00258EC3 /* SecondPageViewController.swift */; };
 		C82071EF1FB74A4500258EC3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */; };
 		C82982111FB46D1D009DDCB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982101FB46D1D009DDCB0 /* AppDelegate.swift */; };
-		C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82982121FB46D1D009DDCB0 /* ViewController.swift */; };
 		C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982141FB46D1D009DDCB0 /* Main.storyboard */; };
 		C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C82982171FB46D1D009DDCB0 /* Assets.xcassets */; };
 		C829821B1FB46D1D009DDCB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82982191FB46D1D009DDCB0 /* LaunchScreen.storyboard */; };
@@ -34,8 +33,11 @@
 		C8825F831FC5C3E500B9E30E /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */; };
 		C8996DE01FE149A0004F354B /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8996DDF1FE149A0004F354B /* SocketHelper.swift */; };
 		C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */; };
+		C8B4C3D81FE81062003211C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8B4C3DA1FE81062003211C9 /* Localizable.strings */; };
+		C8B4C3E41FE811E6003211C9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B4C3E31FE811E6003211C9 /* StringExtension.swift */; };
 		C8E048ED1FB5FFDD001F971B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E048EC1FB5FFD5001F971B /* MapKit.framework */; };
 		C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E048EE1FB60003001F971B /* MapViewController.swift */; };
+		C8E179631FE934C100AA8972 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E179621FE934C100AA8972 /* UITextViewExtension.swift */; };
 		C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */; };
 		C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */; };
 		C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8E048F11FB60DB0001F971B /* FTB.ttf */; };
@@ -70,7 +72,6 @@
 		C82071EE1FB74A4500258EC3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C829820D1FB46D1C009DDCB0 /* Solarboat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solarboat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82982101FB46D1D009DDCB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C82982121FB46D1D009DDCB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C82982151FB46D1D009DDCB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C82982171FB46D1D009DDCB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C829821A1FB46D1D009DDCB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		C85808441FC9B8780098C3B2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C85808461FC9B9340098C3B2 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		C85808481FC9C1270098C3B2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		C85808491FC9C1280098C3B2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C87305981FC5D05100B68049 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C87305A21FC5F54E00B68049 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -96,9 +96,15 @@
 		C8825F821FC5C3E500B9E30E /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsBundleHelper.swift; path = Solarboat/SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		C8996DDF1FE149A0004F354B /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		C8B391F61FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatInformationHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		C8B4C3D51FE80DEF003211C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		C8B4C3D91FE81062003211C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C8B4C3E01FE8118B003211C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C8B4C3E21FE811BE003211C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C8B4C3E31FE811E6003211C9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C8E048EC1FB5FFD5001F971B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8E048EE1FB60003001F971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C8E048F11FB60DB0001F971B /* FTB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FTB.ttf; sourceTree = "<group>"; };
+		C8E179621FE934C100AA8972 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatLocationAnnotation.swift; sourceTree = "<group>"; };
 		C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousBoatLocationAnnotation.swift; sourceTree = "<group>"; };
 		C8ED12331FE17047006BA457 /* AppStartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartHelper.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 		C829820F1FB46D1C009DDCB0 /* Solarboat */ = {
 			isa = PBXGroup;
 			children = (
+				C8FFD0AE1FEA7752009B05BB /* Helpers */,
 				C87305A71FC6CE1F00B68049 /* Models */,
 				C8E048F01FB60D9E001F971B /* Fonts */,
 				C8DE0D791FB4700600E881CC /* Storyboards */,
@@ -185,7 +192,7 @@
 				C82982171FB46D1D009DDCB0 /* Assets.xcassets */,
 				C829821C1FB46D1D009DDCB0 /* Info.plist */,
 				C87305971FC5CBD300B68049 /* Extensions */,
-				C87305981FC5D05100B68049 /* Reachability.swift */,
+				C8B4C3DA1FE81062003211C9 /* Localizable.strings */,
 			);
 			path = Solarboat;
 			sourceTree = "<group>";
@@ -212,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				C87305951FC5CBCE00B68049 /* UIViewControllerExtension.swift */,
+				C8B4C3E31FE811E6003211C9 /* StringExtension.swift */,
+				C8E179621FE934C100AA8972 /* UITextViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,10 +233,6 @@
 				C8E452CA1FD6B044005922D3 /* BoatLocationAnnotation.swift */,
 				C8E452CC1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift */,
 				C834C02E1FDACD8200FA3161 /* BoatLocation.swift */,
-				C834C0301FDAE34D00FA3161 /* EventHelper.swift */,
-				C834C0321FDAE46100FA3161 /* EventManager.swift */,
-				C8996DDF1FE149A0004F354B /* SocketHelper.swift */,
-				C8ED12331FE17047006BA457 /* AppStartHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,7 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				C8B391F51FC99B04003145CA /* TableViewCells */,
-				C82982121FB46D1D009DDCB0 /* ViewController.swift */,
 				C8E048EE1FB60003001F971B /* MapViewController.swift */,
 				C82071E41FB732FF00258EC3 /* InformationViewController.swift */,
 				C82071E61FB73E5D00258EC3 /* InformationPageViewController.swift */,
@@ -281,6 +285,18 @@
 				C8E048F11FB60DB0001F971B /* FTB.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C8FFD0AE1FEA7752009B05BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C834C0301FDAE34D00FA3161 /* EventHelper.swift */,
+				C834C0321FDAE46100FA3161 /* EventManager.swift */,
+				C8996DDF1FE149A0004F354B /* SocketHelper.swift */,
+				C8ED12331FE17047006BA457 /* AppStartHelper.swift */,
+				C87305981FC5D05100B68049 /* Reachability.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +392,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = C82982041FB46D1C009DDCB0;
 			productRefGroup = C829820E1FB46D1C009DDCB0 /* Products */;
@@ -398,6 +415,7 @@
 				C82982181FB46D1D009DDCB0 /* Assets.xcassets in Resources */,
 				C8825F811FC5C1F100B9E30E /* Settings.bundle in Resources */,
 				C82982161FB46D1D009DDCB0 /* Main.storyboard in Resources */,
+				C8B4C3D81FE81062003211C9 /* Localizable.strings in Resources */,
 				C8EC59411FBB2FBC000FA85E /* FTB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,12 +512,12 @@
 				C87305A91FC6CE3000B68049 /* BoatUpdate.swift in Sources */,
 				C8ED12341FE17047006BA457 /* AppStartHelper.swift in Sources */,
 				C85808471FC9B9340098C3B2 /* MessageTableViewCell.swift in Sources */,
+				C8B4C3E41FE811E6003211C9 /* StringExtension.swift in Sources */,
 				C8E452CB1FD6B044005922D3 /* BoatLocationAnnotation.swift in Sources */,
 				C82071EB1FB7452E00258EC3 /* SecondPageViewController.swift in Sources */,
 				C8B391F71FC9A4F3003145CA /* BoatInformationHeaderTableViewCell.swift in Sources */,
 				C87305991FC5D05100B68049 /* Reachability.swift in Sources */,
 				C82071E11FB723CD00258EC3 /* BoatInformationTableViewCell.swift in Sources */,
-				C82982131FB46D1D009DDCB0 /* ViewController.swift in Sources */,
 				C82071EF1FB74A4500258EC3 /* TabBarViewController.swift in Sources */,
 				C82071E91FB7451100258EC3 /* FirstPageViewController.swift in Sources */,
 				C8E048EF1FB60003001F971B /* MapViewController.swift in Sources */,
@@ -509,6 +527,7 @@
 				C834C02F1FDACD8200FA3161 /* BoatLocation.swift in Sources */,
 				C87305961FC5CBCE00B68049 /* UIViewControllerExtension.swift in Sources */,
 				C8E452CD1FD6BFBF005922D3 /* PreviousBoatLocationAnnotation.swift in Sources */,
+				C8E179631FE934C100AA8972 /* UITextViewExtension.swift in Sources */,
 				C834C0311FDAE34D00FA3161 /* EventHelper.swift in Sources */,
 				C82071E51FB732FF00258EC3 /* InformationViewController.swift in Sources */,
 			);
@@ -550,7 +569,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C82982151FB46D1D009DDCB0 /* Base */,
-				C85808491FC9C1280098C3B2 /* nl */,
+				C8B4C3D51FE80DEF003211C9 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -562,6 +581,16 @@
 				C85808481FC9C1270098C3B2 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C8B4C3DA1FE81062003211C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8B4C3D91FE81062003211C9 /* en */,
+				C8B4C3E01FE8118B003211C9 /* Base */,
+				C8B4C3E21FE811BE003211C9 /* nl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

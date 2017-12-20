@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Solarboat
+
+  Created by Thomas Roovers on 18-12-17.
+  Copyright © 2017 Thomas Roovers. All rights reserved.
+*/
+
+"boat_header_title" = "BOAT";
+"wheather_header_title" = "WHEATHER";
+"km_per_hour" = "km/h";
+"mm_per_hour" = "mm/h";
+"sender_name_field_empty" = "You have to fill in a name";
+"sender_name_saved" = "Your name was saved!";
+"message_field_empty" = "You have to provide a message";
+"no_internet_connection" = "No internet connection";

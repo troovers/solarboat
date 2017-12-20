@@ -38,6 +38,9 @@
 /* Class = "UITabBarItem"; title = "Instellingen"; ObjectID = "Zqn-qm-UnF"; */
 "Zqn-qm-UnF.title" = "Instellingen";
 
+/* Class = "UILabel"; text = "SENDER NAME"; ObjectID = "fr9-4E-Slt"; */
+"fr9-4E-Slt.text" = "SENDER NAME";
+
 /* Class = "UITabBarItem"; title = "Berichten"; ObjectID = "gXm-h0-JQP"; */
 "gXm-h0-JQP.title" = "Berichten";
 

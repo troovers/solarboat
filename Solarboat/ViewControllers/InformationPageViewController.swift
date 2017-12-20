@@ -20,9 +20,15 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
     
     override func viewWillAppear(_ animated: Bool) {
         // Change the style of the navigation bar
+        
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.view.backgroundColor = UIColor.clear
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         // Change status bar color to transparent
@@ -31,11 +37,6 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         
         // Remove the tabbar
         self.tabBarController?.tabBar.isHidden = true
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         self.dataSource = self
         self.delegate = self
@@ -56,8 +57,8 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         // Reset the style of the navigation bar
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.view.backgroundColor = UIColor(red: 198/255, green: 0, blue: 42/255, alpha: 1)
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 1)
+
         // Reset the status bar color
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = UIColor(red: 198/255, green: 23/255, blue: 42/255, alpha: 1)
@@ -142,8 +143,9 @@ class InformationPageViewController: UIPageViewController, UIPageViewControllerD
         self.pageControl.tintColor = UIColor(red: 192/255, green: 0, blue: 42/255, alpha: 1)
         self.pageControl.pageIndicatorTintColor = UIColor.white
         self.pageControl.currentPageIndicatorTintColor = UIColor(red: 192/255, green: 0, blue: 42/255, alpha: 1)
-        self.pageControl.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        self.pageControl.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
         self.view.addSubview(pageControl)
+
     }
     
     /**

@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .none:
                 // Display a toast when the connection went dark
                 if connected {
-                    viewController.showToast(message: "Er is geen internetverbinding", errorCode: 500, warning: true, hideAfter: 0)
+                    viewController.showToast(message: "no_internet_connection".localized(), errorCode: 500, warning: true, hideAfter: 0)
                     
                     connected = false
                 }

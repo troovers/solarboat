@@ -36,6 +36,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         }, completion: nil)
     }
     
+    @IBAction func centerBoatOnMap(_ sender: Any) {
+        if(currentLocationAnnotation != nil) {
+            let visibleRegion = MKCoordinateRegionMakeWithDistance((self.currentLocationAnnotation?.boatLocation.location)!, 3000, 3000)
+            self.mapView.setRegion(self.mapView.regionThatFits(visibleRegion), animated: true)
+        }
+    }
+    
     @IBOutlet weak var liveFeed: YTPlayerView!
     
     @IBOutlet weak var liveFeedButton: UIButton!
@@ -66,7 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         
         // Launch the startup helper
-        let appStartHelper = AppStartHelper()
+        _ = AppStartHelper()
         
         mapView.delegate = self
         tableView.dataSource = self
@@ -92,7 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         // Generate the structure of the tableview with stub data
         data[0] = [
             "type": "header",
-            "text": "BOOT"
+            "text": "boat_header_title".localized()
         ]
         
         data[1] = [
@@ -109,7 +116,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         
         data[3] = [
             "type": "header",
-            "text": "WEER"
+            "text": "wheather_header_title".localized()
         ]
         
         data[4] = [
@@ -151,7 +158,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         // Start the timer to update the weather
         self.updateWeather()
         
-        Timer.scheduledTimer(timeInterval: 600.0, target: self, selector: Selector(("updateWeather")), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 600.0, target: self, selector: #selector(updateWeather), userInfo: nil, repeats: true)
     }
     
     
@@ -272,8 +279,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         // Add the new location to the map as current location
         mapView.addAnnotation(self.currentLocationAnnotation!)
         
-        // Move the map to zoom in on the last added location
-        //mapView.setCenter(boatLocation.location, animated: true)
+        if (UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.centerBoatOnMap)) {
+            // Move the map to zoom in on the last added location
+            mapView.setCenter(boatLocation.location, animated: true)
+        }
     }
     
     
@@ -313,7 +322,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     /**
      Update the weather via the Buienradar API
      */
-    private func updateWeather() {
+    @objc private func updateWeather() {
         Alamofire.request("https://api.buienradar.nl/data/public/1.1/jsonfeed").responseJSON { response in
             guard let result = response.result.value as? [String:Any] else { return }
             guard let buienradar = result["buienradarnl"] as? [String:Any] else { return }
@@ -328,7 +337,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                     if(station["stationcode"] as! String == "6270") {
                         
                         if let windSpeed = (Double(station["windsnelheidMS"] as! String)! / 3.6) as? Double {
-                            self.tableData[4]?.updateValue("\(String(format: "%.1f", windSpeed)) km/h", forKey: "text")
+                            self.tableData[4]?.updateValue("\(String(format: "%.1f", windSpeed)) " + "km_per_hour".localized(), forKey: "text")
                         }
                         
                         self.tableData[5]?.updateValue("\(station["windrichting"]!)", forKey: "text")
@@ -340,7 +349,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                             rain = rainMM
                         }
                         
-                        self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) mm/h", forKey: "text")
+                        self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) " + "mm_per_hour".localized(), forKey: "text")
                         
                         self.tableView.reloadRows(at: [IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0), IndexPath(item: 7, section: 0)], with: .none)
                         
@@ -356,10 +365,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      The function which get's called when the youtube player view is ready
      */
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        self.liveFeed.playVideo()
         
-        self.liveFeedButton.setImage(nil, for: .normal)
-        self.liveFeedButton.layer.backgroundColor = nil
+        // Check if the livefeed is active in settings
+        if(UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.displayLivefeed)) {
+            self.liveFeed.playVideo()
+            
+            self.liveFeedButton.setImage(nil, for: .normal)
+            self.liveFeedButton.layer.backgroundColor = nil
+        }
     }
     
     
@@ -422,16 +435,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      The settings have been altered, check to see if we need to remove or show the livefeed
      */
     @objc func defaultsChanged(){
-        if UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.displayLivefeed) {
+        let liveFeedWasHidden = self.liveFeed.isHidden
+        
+        if (UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.displayLivefeed)) {
             self.liveFeed.isHidden = false
+            self.liveFeedButton.isHidden = false
+            
+            // Start playing again
+            if(liveFeedWasHidden) {
+                self.loadLiveStream()
+            }
         } else {
             self.liveFeed.isHidden = true
+            self.liveFeedButton.isHidden = true
             
             if liveFeedIsExpanded {
                 shrinkLiveFeed()
                 
                 liveFeedIsExpanded = false
             }
+            
+            // Stop playing
+            self.liveFeed.stopVideo()
+            
+            self.liveFeedButton.setImage(UIImage(named: "noLiveStream"), for: .normal)
+            self.liveFeedButton.layer.backgroundColor = UIColor(red: 154/255, green: 154/255, blue: 154/255, alpha: 1.0).cgColor
         }
     }
     

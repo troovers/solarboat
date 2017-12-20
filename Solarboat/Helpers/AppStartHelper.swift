@@ -77,7 +77,7 @@ class AppStartHelper {
                 "model": UIDevice.current.model,
                 "systemVersion": UIDevice.current.systemVersion,
                 "platform": "ios",
-                "appVersion": UserDefaults.standard.string(forKey: "APP_VERSION")
+                "appVersion": UserDefaults.standard.string(forKey: "APP_VERSION")!
                 ] as [String : Any]
             
             client?.emit("registerDevice", deviceInfo)

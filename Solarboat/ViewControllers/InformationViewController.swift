@@ -10,10 +10,12 @@ import UIKit
 
 class InformationViewController: UIViewController {
 
-    @IBOutlet weak var information: UILabel!
+    @IBOutlet weak var information: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        information.updateWithSpacing(lineSpacing: 16.0)
     }
 
     override func didReceiveMemoryWarning() {

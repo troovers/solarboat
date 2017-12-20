@@ -22,7 +22,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         guard let string = senderName.text else { return }
         
         if (string.isEmpty) {
-            senderNameErrorLabel.text = "U dient een naam op te geven"
+            senderNameErrorLabel.text = "sender_name_field_empty".localized()
             senderName.layer.borderColor = errorBordercolor.cgColor
         } else {
             senderNameErrorLabel.text = ""
@@ -30,7 +30,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             
             UserDefaults.standard.set(senderName.text!, forKey: "userName")
             
-            self.showToast(message: "Uw naam is opgeslagen!", errorCode: 200, warning: false, hideAfter: 5.0, toastLocation: UIViewController.toastTop)
+            self.showToast(message: "sender_name_saved".localized(), errorCode: 200, warning: false, hideAfter: 5.0, toastLocation: UIViewController.toastTop)
         }
     }
     
@@ -43,7 +43,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         guard let content = message.text else { return }
         
         if (content.isEmpty) {
-            messageErrorLabel.text = "U dient een bericht op te geven"
+            messageErrorLabel.text = "message_field_empty".localized()
             message.layer.borderColor = errorBordercolor.cgColor
         } else {
             messageErrorLabel.text = ""
@@ -108,7 +108,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
                     let dateFormatterNew = DateFormatter()
                     dateFormatterNew.dateFormat = "dd-MM HH:mm"
                     
-                    for (index, object) in result.enumerated() {
+                    for (_, object) in result.enumerated() {
                         if let message = object as? [String:Any] {
                             let sender = message["sender_name"] as! String
                             let content = message["message"] as! String

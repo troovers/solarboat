@@ -10,12 +10,12 @@ import UIKit
 
 class SecondPageViewController: UIViewController {
 
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+    @IBOutlet weak var information: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        information.updateWithSpacing(lineSpacing: 16.0)
     }
 
     override func didReceiveMemoryWarning() {

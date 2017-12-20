@@ -10,6 +10,16 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
+			<string>Center boat on map</string>
+			<key>Key</key>
+			<string>CENTER_BOAT_ON_MAP</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
 			<string>Display livefeed</string>
 			<key>Key</key>
 			<string>DISPLAY_LIVEFEED</string>
