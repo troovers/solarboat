@@ -335,11 +335,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                     if(station["stationcode"] as! String == "6270") {
                         
                         if let windSpeed = (Double(station["windsnelheidMS"] as! String)! / 3.6) as? Double {
-                            self.tableData[4]?.updateValue("\(String(format: "%.1f", windSpeed)) " + "km_per_hour".localized(), forKey: "text")
+                            self.tableData[3]?.updateValue("\(String(format: "%.1f", windSpeed)) " + "km_per_hour".localized(), forKey: "text")
                         }
                         
-                        self.tableData[5]?.updateValue("\(station["windrichting"]!)", forKey: "text")
-                        self.tableData[6]?.updateValue("\(station["temperatuur10cm"]!) \u{00B0}", forKey: "text")
+                        self.tableData[4]?.updateValue("\(station["windrichting"]!)", forKey: "text")
+                        self.tableData[5]?.updateValue("\(station["temperatuur10cm"]!) \u{00B0}", forKey: "text")
                         
                         var rain = 0.0
                         
@@ -347,7 +347,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                             rain = rainMM
                         }
                         
-                        self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) " + "mm_per_hour".localized(), forKey: "text")
+                        self.tableData[6]?.updateValue("\(String(format: "%.1f", rain)) " + "mm_per_hour".localized(), forKey: "text")
                         
                         self.tableView.reloadRows(at: [IndexPath(item: 3, section: 0), IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0)], with: .none)
                         
