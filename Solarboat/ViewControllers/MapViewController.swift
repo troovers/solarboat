@@ -109,35 +109,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         ]
         
         data[2] = [
-            "type": "info",
-            "asset": "speed",
-            "text": ""
-        ]
-        
-        data[3] = [
             "type": "header",
             "text": "wheather_header_title".localized()
         ]
         
-        data[4] = [
+        data[3] = [
             "type": "info",
             "asset": "windSpeed",
             "text": "0 km/h"
         ]
         
-        data[5] = [
+        data[4] = [
             "type": "info",
             "asset": "windDirection",
             "text": ""
         ]
         
-        data[6] = [
+        data[5] = [
             "type": "info",
             "asset": "temperature",
             "text": "0 \u{00B0}"
         ]
         
-        data[7] = [
+        data[6] = [
             "type": "info",
             "asset": "rainDrops",
             "text": "0 mm/h"
@@ -159,6 +153,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         self.updateWeather()
         
         Timer.scheduledTimer(timeInterval: 600.0, target: self, selector: #selector(updateWeather), userInfo: nil, repeats: true)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showEasterEgg))
+        tap.numberOfTapsRequired = 4
+        liveFeedButton.addGestureRecognizer(tap)
     }
     
     
@@ -289,7 +287,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
     /**
      Load the live stream of the boat
      */
-    private func loadLiveStream() {
+    @objc private func loadLiveStream() {
     
         let channelId = UserDefaults.standard.string(forKey: "youtubeChannelId")
         
@@ -351,7 +349,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
                         
                         self.tableData[7]?.updateValue("\(String(format: "%.1f", rain)) " + "mm_per_hour".localized(), forKey: "text")
                         
-                        self.tableView.reloadRows(at: [IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0), IndexPath(item: 7, section: 0)], with: .none)
+                        self.tableView.reloadRows(at: [IndexPath(item: 3, section: 0), IndexPath(item: 4, section: 0), IndexPath(item: 5, section: 0), IndexPath(item: 6, section: 0)], with: .none)
                         
                         return
                     }
@@ -373,6 +371,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             self.liveFeedButton.setImage(nil, for: .normal)
             self.liveFeedButton.layer.backgroundColor = nil
         }
+    }
+    
+    
+    /**
+     Show the easter egg video
+     */
+    @objc func showEasterEgg() {
+        self.liveFeed.stopVideo()
+        self.liveFeed.loadVideo(byId: "3jkNeuDTKCM", startSeconds: 130.0, endSeconds: 160.0, suggestedQuality: .auto)
+        
+        Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(loadLiveStream), userInfo: nil, repeats: false)
     }
     
     
@@ -548,7 +557,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
      Generate the cell for the index
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 || indexPath.row == 3 {
+        if indexPath.row == 0 || indexPath.row == 2 {
             let cell: BoatInformationHeaderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "boatInformationHeaderTableCell", for: indexPath) as! BoatInformationHeaderTableViewCell
             
             let row = tableData[indexPath.row]! as [String:String]
